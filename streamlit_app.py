@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import google.generativeai as genai
+from datetime import datetime
 
 # Initialize Gemini API
 def initialize_gemini():
@@ -12,11 +13,20 @@ def load_hr_data():
     try:
         employee_data = pd.read_csv('employee_data_1511.csv')
         employee_skills = pd.read_csv('employee_skills_1511.csv')
-        feedback_data = pd.read_csv('feedback_data_th.csv')
+        
+        # Handle missing or empty feedback data
+        try:
+            feedback_data = pd.read_csv('feedback_data_page.csv')
+            if feedback_data.empty:
+                feedback_data = pd.DataFrame(columns=['Feedback', 'Timestamp'])
+        except Exception as e:
+            feedback_data = pd.DataFrame(columns=['Feedback', 'Timestamp'])  # Default empty dataframe with headers
+            st.warning(f"Could not load feedback data: {str(e)}")
+
         kpi_data = pd.read_csv('kpi_data.csv')
         leave_data = pd.read_csv('leave_data_up.csv')
         task_data = pd.read_csv('task_data2_edit.csv')
-        
+
         return {
             'employee_data': employee_data,
             'employee_skills': employee_skills,
@@ -29,6 +39,7 @@ def load_hr_data():
         st.error(f"Error loading CSV files: {str(e)}")
         return None
 
+# Function to get data insights using Gemini model
 def get_data_insights(model, data_dict, selected_data):
     insights = {}
     for data_name in selected_data:
@@ -55,6 +66,7 @@ def get_data_insights(model, data_dict, selected_data):
     
     return insights
 
+# Function to get Gemini's response based on user input
 def get_gemini_response(model, question, data_context):
     try:
         prompt = f"""คุณเป็น HR Analyst ที่เชี่ยวชาญการวิเคราะห์ข้อมูลพนักงาน 
@@ -75,6 +87,19 @@ def get_gemini_response(model, question, data_context):
     except Exception as e:
         return f"เกิดข้อผิดพลาดในการประมวลผล: {str(e)}"
 
+# Function to save feedback from employee with timestamp
+def save_feedback(feedback):
+    try:
+        feedback_data = pd.read_csv('feedback_data_page.csv')  # Updated file name
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        new_feedback = pd.DataFrame([{'Feedback': feedback, 'Timestamp': timestamp}])
+        feedback_data = pd.concat([feedback_data, new_feedback], ignore_index=True)
+        feedback_data.to_csv('feedback_data_page.csv', index=False)
+        st.success("Feedback ได้รับการบันทึกแล้ว")
+    except Exception as e:
+        st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {str(e)}")
+
+# Main Streamlit app function
 def main():
     st.set_page_config(page_title="HR Analytics Dashboard", page_icon="📊", layout="wide")
     
@@ -88,76 +113,116 @@ def main():
     data_dict = load_hr_data()
     
     if data_dict:
-        # Sidebar for data selection
+        # Sidebar for user role selection
         with st.sidebar:
-            st.header("เลือกข้อมูลที่ต้องการวิเคราะห์")
-            selected_data = st.multiselect(
-                "เลือกชุดข้อมูล:",
-                list(data_dict.keys()),
-                default=list(data_dict.keys())[0]
-            )
-            
-            st.header("ข้อมูลที่มี")
-            for data_name in selected_data:
-                st.subheader(f"📁 {data_name}")
-                st.write("Columns:", ", ".join(data_dict[data_name].columns.tolist()))
-        
-        # Main content
-        tab1, tab2 = st.tabs(["📊 Data Explorer", "💬 AI Assistant"])
-        
-        with tab1:
-            # Get AI insights for selected datasets
-            insights = get_data_insights(model, data_dict, selected_data)
-            
-            for data_name in selected_data:
-                st.subheader(f"📊 {data_name}")
+            st.header("เลือกบทบาทของคุณ")
+            user_role = st.radio("กรุณาเลือกบทบาท", ["HR", "พนักงาน"], index=0)
+
+            if user_role == "HR":
+                st.header("เลือกข้อมูลที่ต้องการวิเคราะห์")
+                selected_data = st.multiselect(
+                    "เลือกชุดข้อมูล:",
+                    list(data_dict.keys()),
+                    default=list(data_dict.keys())[0]
+                )
                 
-                # Display sample data
-                st.write("ตัวอย่างข้อมูล:")
-                st.dataframe(data_dict[data_name].head())
+                st.header("ข้อมูลที่มี")
+                for data_name in selected_data:
+                    st.subheader(f"📁 {data_name}")
+                    st.write("Columns:", ", ".join(data_dict[data_name].columns.tolist()))
+
+            if user_role == "พนักงาน":
+                st.header("กรุณากรอก Feedback")
+                feedback = st.text_area("กรอก Feedback ของคุณที่นี่")
+                if st.button("ส่ง Feedback"):
+                    if feedback:
+                        save_feedback(feedback)
+                    else:
+                        st.warning("กรุณากรอกข้อความก่อนส่ง")
+
+        # Main content based on user role
+        if user_role == "HR":
+            tab1, tab2 = st.tabs(["📊 Data Explorer", "💬 AI Assistant"])
+            
+            with tab1:
+                # Get AI insights for selected datasets
+                insights = get_data_insights(model, data_dict, selected_data)
                 
-                # Display AI insights
-                st.write("📈 การวิเคราะห์ข้อมูลโดย AI:")
-                st.write(insights[data_name])
+                for data_name in selected_data:
+                    st.subheader(f"📊 {data_name}")
+                    
+                    # Display sample data
+                    st.write("ตัวอย่างข้อมูล:")
+                    st.dataframe(data_dict[data_name].head())
+                    
+                    # Display AI insights
+                    st.write("📈 การวิเคราะห์ข้อมูลโดย AI:")
+                    st.write(insights[data_name])
+
+            with tab2:
+                # Initialize chat history for HR
+                if "messages" not in st.session_state:
+                    st.session_state.messages = []
+                
+                # Display chat history
+                for message in st.session_state.messages:
+                    with st.chat_message(message["role"]):
+                        st.markdown(message["content"])
+                
+                # Create data context for Gemini
+                data_context = ""
+                for data_name in selected_data:
+                    df = data_dict[data_name]
+                    data_context += f"\n{data_name}:\n"
+                    data_context += f"Columns: {', '.join(df.columns)}\n"
+                    for col in df.select_dtypes(include=['number']).columns:
+                        data_context += f"{col} stats: Min={df[col].min()}, Max={df[col].max()}, Mean={df[col].mean():.2f}\n"
+                
+                # Chat input
+                if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูล HR..."):
+                    st.session_state.messages.append({"role": "user", "content": prompt})
+                    with st.chat_message("user"):
+                        st.markdown(prompt)
+                    
+                    if model:
+                        response = get_gemini_response(model, prompt, data_context)
+                        st.session_state.messages.append({"role": "assistant", "content": response})
+                        with st.chat_message("assistant"):
+                            st.markdown(response)
+                
+                # Reset button
+                if st.button("ล้างประวัติการสนทนา"):
+                    st.session_state.messages = []
+                    st.experimental_rerun()
         
-        with tab2:
-            # Initialize chat history
-            if "messages" not in st.session_state:
-                st.session_state.messages = []
+        if user_role == "พนักงาน":
+            st.header("ถามคำถามเกี่ยวกับการทำงานหรือการประเมินผลงาน")
+            
+            # Initialize chat history for employee
+            if "employee_messages" not in st.session_state:
+                st.session_state.employee_messages = []
             
             # Display chat history
-            for message in st.session_state.messages:
+            for message in st.session_state.employee_messages:
                 with st.chat_message(message["role"]):
                     st.markdown(message["content"])
             
-            # Create data context for Gemini
-            data_context = ""
-            for data_name in selected_data:
-                df = data_dict[data_name]
-                data_context += f"\n{data_name}:\n"
-                data_context += f"Columns: {', '.join(df.columns)}\n"
-                for col in df.select_dtypes(include=['number']).columns:
-                    data_context += f"{col} stats: Min={df[col].min()}, Max={df[col].max()}, Mean={df[col].mean():.2f}\n"
-            
             # Chat input
-            if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูล HR..."):
-                st.session_state.messages.append({"role": "user", "content": prompt})
+            if prompt := st.chat_input("ถามคำถามเกี่ยวกับการทำงานหรือการประเมินผลงาน..."):
+                st.session_state.employee_messages.append({"role": "user", "content": prompt})
                 with st.chat_message("user"):
                     st.markdown(prompt)
                 
                 if model:
-                    response = get_gemini_response(model, prompt, data_context)
-                    st.session_state.messages.append({"role": "assistant", "content": response})
+                    response = get_gemini_response(model, prompt, "")
+                    st.session_state.employee_messages.append({"role": "assistant", "content": response})
                     with st.chat_message("assistant"):
                         st.markdown(response)
-            
-            # Reset button
-            if st.button("ล้างประวัติการสนทนา"):
-                st.session_state.messages = []
-                st.experimental_rerun()
-    
-    else:
-        st.error("ไม่สามารถโหลดข้อมูลได้ กรุณาตรวจสอบไฟล์ CSV")
+                    
+                    # Reset button
+                    if st.button("ล้างประวัติการสนทนา"):
+                        st.session_state.employee_messages = []
+                        st.experimental_rerun()
 
 if __name__ == "__main__":
     main()
