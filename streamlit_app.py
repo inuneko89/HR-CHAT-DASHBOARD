@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 # Initialize Gemini API
 def initialize_gemini():
-    genai.configure(api_key="AIzaSyCCQumrGPGSzDgY7_YFSSI5kFzYb-WXFB4")  # ใส่ API key ของคุณที่นี่
+    genai.configure(api_key="AIzaSyCCQumrGPGSzDgY7_YFSSI5kFzYb-WXFB4")
     return genai.GenerativeModel('gemini-pro')
 
 # Load CSV data
@@ -28,6 +28,32 @@ def load_hr_data():
     except Exception as e:
         st.error(f"Error loading CSV files: {str(e)}")
         return None
+
+def get_data_insights(model, data_dict, selected_data):
+    insights = {}
+    for data_name in selected_data:
+        df = data_dict[data_name]
+        prompt = f"""คุณเป็น HR Analyst ที่เชี่ยวชาญการวิเคราะห์ข้อมูลพนักงาน 
+        กรุณาวิเคราะห์ข้อมูลต่อไปนี้และให้ข้อมูลเชิงลึกที่สำคัญ:
+
+        ชุดข้อมูล: {data_name}
+        Columns: {', '.join(df.columns)}
+        
+        สำหรับคอลัมน์ตัวเลข:
+        {', '.join([f"{col}: Min={df[col].min()}, Max={df[col].max()}, Mean={df[col].mean():.2f}" for col in df.select_dtypes(include=['number']).columns])}
+
+        กรุณาให้:
+        1. ข้อมูลเชิงลึก 3-4 ประเด็นที่สำคัญ
+        2. แนวโน้มหรือรูปแบบที่น่าสนใจ
+        3. ข้อเสนอแนะสำหรับ HR"""
+
+        try:
+            response = model.generate_content(prompt)
+            insights[data_name] = response.text
+        except Exception as e:
+            insights[data_name] = f"ไม่สามารถวิเคราะห์ข้อมูลได้: {str(e)}"
+    
+    return insights
 
 def get_gemini_response(model, question, data_context):
     try:
@@ -80,13 +106,19 @@ def main():
         tab1, tab2 = st.tabs(["📊 Data Explorer", "💬 AI Assistant"])
         
         with tab1:
+            # Get AI insights for selected datasets
+            insights = get_data_insights(model, data_dict, selected_data)
+            
             for data_name in selected_data:
                 st.subheader(f"📊 {data_name}")
+                
+                # Display sample data
+                st.write("ตัวอย่างข้อมูล:")
                 st.dataframe(data_dict[data_name].head())
                 
-                # Basic statistics
-                st.write("สถิติพื้นฐาน:")
-                st.dataframe(data_dict[data_name].describe())
+                # Display AI insights
+                st.write("📈 การวิเคราะห์ข้อมูลโดย AI:")
+                st.write(insights[data_name])
         
         with tab2:
             # Initialize chat history
