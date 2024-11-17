@@ -1,0 +1,270 @@
+Leave_ID,Employee_ID,Leave_Type,Start_Leave,End_Leave,Absence_Reason
+1,1,Unpaid Leave,2020-03-05,2020-03-08,Personal Projects
+2,1,Late Coming,2024-10-04,2024-10-04,BTS breakdown
+3,1,Late Coming,2024-08-22,2024-08-22,Roads impassable
+4,1,Personal Leave,2023-02-28,2023-03-04,Personal Leave
+5,2,Personal Leave,2023-11-03,2023-11-10,Personal Leave
+6,2,Personal Leave,2020-11-21,2020-12-01,Personal Leave
+7,5,Vacation,2021-02-20,2021-02-26,Vacation
+8,5,Personal Leave,2020-10-18,2020-10-19,Personal Leave
+9,5,Vacation,2022-07-23,2022-08-02,Vacation
+10,5,Sick Leave,2024-02-12,2024-02-18,Flu
+11,6,Vacation,2021-06-25,2021-06-29,Vacation
+12,7,Personal Leave,2024-06-21,2024-07-01,Personal Leave
+13,7,Personal Leave,2024-02-09,2024-02-17,Personal Leave
+14,7,Sick Leave,2024-11-04,2024-11-06,Injury
+15,9,Personal Leave,2020-10-07,2020-10-10,Personal Leave
+16,9,Vacation,2022-01-23,2022-01-26,Vacation
+17,9,Personal Leave,2023-12-21,2023-12-25,Personal Leave
+18,9,Late Coming,2020-03-28,2020-03-28,Traffic jam
+19,10,Sick Leave,2023-07-16,2023-07-20,Injury
+20,10,Sick Leave,2019-12-19,2019-12-23,Flu
+21,10,Late Coming,2022-05-05,2022-05-05,Roads impassable
+22,10,Vacation,2024-05-18,2024-05-21,Vacation
+23,11,Vacation,2020-03-08,2020-03-11,Vacation
+24,11,Late Coming,2023-06-29,2023-06-29,BTS breakdown
+25,11,Late Coming,2023-10-01,2023-10-01,Sick child
+26,11,Unpaid Leave,2022-03-05,2022-03-08,Personal Projects
+27,12,Unpaid Leave,2020-12-01,2020-12-11,Extended Travel
+28,12,Late Coming,2021-02-12,2021-02-12,Internet outage
+29,12,Sick Leave,2022-05-30,2022-06-04,Injury
+30,13,Unpaid Leave,2020-10-23,2020-10-25,Extended Travel
+31,13,Vacation,2019-12-02,2019-12-10,Vacation
+32,13,Late Coming,2022-04-07,2022-04-07,BTS breakdown
+33,13,Sick Leave,2022-08-18,2022-08-22,Injury
+34,14,Late Coming,2021-04-26,2021-04-26,Urgent project deadline
+35,15,Sick Leave,2022-10-26,2022-11-03,Flu
+36,15,Unpaid Leave,2023-09-07,2023-09-12,Extended Travel
+37,16,Vacation,2021-01-31,2021-02-02,Vacation
+38,16,Late Coming,2024-09-16,2024-09-16,Sick child
+39,17,Vacation,2021-06-07,2021-06-12,Vacation
+40,18,Vacation,2020-11-20,2020-11-28,Vacation
+41,18,Vacation,2024-08-17,2024-08-24,Vacation
+42,18,Unpaid Leave,2020-04-28,2020-04-29,Personal Projects
+43,18,Sick Leave,2020-02-24,2020-03-05,Medical Appointment
+44,20,Late Coming,2024-06-14,2024-06-14,Internet outage
+45,20,Personal Leave,2021-07-02,2021-07-11,Personal Leave
+46,20,Vacation,2023-12-22,2023-12-30,Vacation
+47,20,Late Coming,2023-04-07,2023-04-07,Backlog of work
+48,21,Sick Leave,2020-02-29,2020-03-01,Injury
+49,21,Sick Leave,2020-11-22,2020-11-29,Medical Appointment
+50,22,Vacation,2023-06-29,2023-07-01,Vacation
+51,23,Late Coming,2022-03-23,2022-03-23,Flooded
+52,24,Personal Leave,2024-03-06,2024-03-13,Personal Leave
+53,24,Sick Leave,2021-03-17,2021-03-20,Medical Appointment
+54,24,Personal Leave,2022-09-06,2022-09-11,Personal Leave
+55,24,Late Coming,2021-12-08,2021-12-08,Urgent project deadline
+56,24,Sick Leave,2020-03-27,2020-03-28,Flu
+57,25,Sick Leave,2022-10-24,2022-10-26,Medical Appointment
+58,25,Sick Leave,2023-08-12,2023-08-16,Medical Appointment
+59,25,Personal Leave,2021-09-16,2021-09-21,Personal Leave
+60,25,Sick Leave,2023-10-11,2023-10-17,Medical Appointment
+61,25,Unpaid Leave,2023-10-29,2023-11-07,Extended Travel
+62,26,Personal Leave,2021-07-21,2021-07-25,Personal Leave
+63,26,Unpaid Leave,2020-09-26,2020-09-30,Personal Projects
+64,26,Personal Leave,2022-10-27,2022-10-31,Personal Leave
+65,26,Vacation,2024-05-08,2024-05-15,Vacation
+66,26,Sick Leave,2021-04-26,2021-05-04,Flu
+67,27,Sick Leave,2024-06-07,2024-06-13,Medical Appointment
+68,28,Personal Leave,2021-01-27,2021-02-05,Personal Leave
+69,29,Late Coming,2020-07-01,2020-07-01,Internet outage
+70,29,Personal Leave,2021-03-02,2021-03-11,Personal Leave
+71,29,Unpaid Leave,2021-10-22,2021-10-28,Personal Projects
+72,29,Personal Leave,2022-01-20,2022-01-25,Personal Leave
+73,29,Unpaid Leave,2023-11-12,2023-11-15,Personal Projects
+74,30,Vacation,2021-11-26,2021-12-01,Vacation
+75,30,Vacation,2020-10-09,2020-10-15,Vacation
+76,30,Unpaid Leave,2024-08-27,2024-09-06,Personal Projects
+77,30,Late Coming,2024-03-27,2024-03-27,Taking child to hospital
+78,31,Sick Leave,2022-09-14,2022-09-21,Medical Appointment
+79,31,Personal Leave,2023-04-05,2023-04-10,Personal Leave
+80,31,Sick Leave,2024-08-31,2024-09-02,Injury
+81,31,Personal Leave,2024-08-13,2024-08-18,Personal Leave
+82,31,Unpaid Leave,2020-05-22,2020-05-26,Extended Travel
+83,32,Vacation,2022-06-25,2022-07-03,Vacation
+84,32,Unpaid Leave,2023-11-27,2023-11-30,Personal Projects
+85,32,Vacation,2023-10-31,2023-11-08,Vacation
+86,32,Unpaid Leave,2022-02-27,2022-03-09,Extended Travel
+87,33,Unpaid Leave,2023-07-06,2023-07-13,Extended Travel
+88,33,Sick Leave,2023-08-23,2023-08-28,Injury
+89,33,Sick Leave,2019-11-11,2019-11-18,Medical Appointment
+90,33,Personal Leave,2023-10-06,2023-10-07,Personal Leave
+91,34,Late Coming,2024-08-25,2024-08-25,BTS breakdown
+92,34,Vacation,2021-04-26,2021-04-30,Vacation
+93,34,Personal Leave,2023-12-22,2023-12-27,Personal Leave
+94,34,Personal Leave,2021-11-27,2021-12-03,Personal Leave
+95,35,Vacation,2021-01-20,2021-01-29,Vacation
+96,35,Personal Leave,2022-01-09,2022-01-13,Personal Leave
+97,35,Unpaid Leave,2020-11-11,2020-11-17,Extended Travel
+98,35,Late Coming,2022-03-04,2022-03-04,Internet outage
+99,35,Late Coming,2024-06-26,2024-06-26,Urgent project deadline
+100,36,Personal Leave,2024-02-17,2024-02-21,Personal Leave
+101,36,Sick Leave,2022-01-04,2022-01-09,Injury
+102,36,Late Coming,2021-07-30,2021-07-30,Backlog of work
+103,38,Personal Leave,2021-10-17,2021-10-26,Personal Leave
+104,38,Late Coming,2023-06-07,2023-06-07,Sick child
+105,38,Late Coming,2024-08-26,2024-08-26,Traffic jam
+106,38,Vacation,2021-07-05,2021-07-06,Vacation
+107,39,Personal Leave,2024-04-07,2024-04-17,Personal Leave
+108,39,Personal Leave,2020-07-05,2020-07-15,Personal Leave
+109,40,Unpaid Leave,2020-06-08,2020-06-16,Extended Travel
+110,40,Sick Leave,2021-08-23,2021-08-24,Flu
+111,40,Personal Leave,2022-01-24,2022-01-29,Personal Leave
+112,40,Sick Leave,2023-01-13,2023-01-16,Injury
+113,41,Unpaid Leave,2022-12-27,2023-01-03,Personal Projects
+114,41,Late Coming,2022-07-19,2022-07-19,Internet outage
+115,41,Unpaid Leave,2024-05-25,2024-06-01,Personal Projects
+116,41,Late Coming,2019-11-30,2019-11-30,Roads impassable
+117,41,Personal Leave,2023-03-04,2023-03-13,Personal Leave
+118,42,Unpaid Leave,2024-09-19,2024-09-29,Personal Projects
+119,42,Vacation,2022-12-03,2022-12-09,Vacation
+120,43,Sick Leave,2020-09-24,2020-10-02,Medical Appointment
+121,43,Sick Leave,2020-03-19,2020-03-20,Flu
+122,43,Late Coming,2023-03-30,2023-03-30,Urgent project deadline
+123,43,Vacation,2024-10-11,2024-10-16,Vacation
+124,44,Personal Leave,2024-06-23,2024-06-27,Personal Leave
+125,44,Sick Leave,2023-09-04,2023-09-11,Medical Appointment
+126,44,Personal Leave,2021-10-23,2021-10-25,Personal Leave
+127,44,Vacation,2021-04-29,2021-05-01,Vacation
+128,45,Vacation,2022-03-27,2022-03-29,Vacation
+129,45,Vacation,2023-03-21,2023-03-28,Vacation
+130,45,Late Coming,2021-09-04,2021-09-04,Flooded
+131,45,Late Coming,2021-09-01,2021-09-01,Backlog of work
+132,46,Vacation,2022-09-16,2022-09-22,Vacation
+133,46,Vacation,2024-09-02,2024-09-03,Vacation
+134,46,Unpaid Leave,2021-04-15,2021-04-25,Extended Travel
+135,46,Unpaid Leave,2020-12-07,2020-12-10,Extended Travel
+136,47,Vacation,2023-04-20,2023-04-22,Vacation
+137,49,Sick Leave,2022-12-28,2022-12-30,Flu
+138,50,Late Coming,2024-01-18,2024-01-18,Traffic jam
+139,50,Personal Leave,2020-06-24,2020-07-01,Personal Leave
+140,50,Personal Leave,2019-11-11,2019-11-12,Personal Leave
+141,50,Vacation,2024-01-31,2024-02-08,Vacation
+142,51,Late Coming,2024-09-13,2024-09-13,Sick child
+143,51,Vacation,2022-03-10,2022-03-18,Vacation
+144,52,Personal Leave,2023-05-31,2023-06-07,Personal Leave
+145,52,Unpaid Leave,2021-02-16,2021-02-20,Personal Projects
+146,53,Unpaid Leave,2024-07-20,2024-07-30,Personal Projects
+147,54,Personal Leave,2022-10-01,2022-10-03,Personal Leave
+148,54,Late Coming,2022-06-27,2022-06-27,BTS breakdown
+149,54,Personal Leave,2024-02-24,2024-03-03,Personal Leave
+150,54,Personal Leave,2022-08-21,2022-08-29,Personal Leave
+151,54,Vacation,2022-11-16,2022-11-22,Vacation
+152,56,Sick Leave,2024-01-10,2024-01-14,Flu
+153,56,Late Coming,2023-06-04,2023-06-04,Traffic jam
+154,56,Personal Leave,2021-04-10,2021-04-14,Personal Leave
+155,56,Sick Leave,2023-03-11,2023-03-21,Medical Appointment
+156,57,Personal Leave,2020-03-13,2020-03-16,Personal Leave
+157,57,Sick Leave,2021-06-07,2021-06-14,Flu
+158,57,Personal Leave,2023-02-03,2023-02-07,Personal Leave
+159,58,Sick Leave,2023-10-21,2023-10-25,Injury
+160,58,Unpaid Leave,2024-07-31,2024-08-10,Personal Projects
+161,59,Sick Leave,2023-08-19,2023-08-21,Injury
+162,60,Late Coming,2024-05-21,2024-05-21,Flooded
+163,60,Vacation,2023-05-24,2023-05-28,Vacation
+164,60,Late Coming,2021-10-22,2021-10-22,Taking child to hospital
+165,60,Late Coming,2023-05-01,2023-05-01,Flooded
+166,60,Late Coming,2021-11-14,2021-11-14,Computer malfunction
+167,61,Personal Leave,2020-04-18,2020-04-21,Personal Leave
+168,61,Personal Leave,2024-10-10,2024-10-17,Personal Leave
+169,61,Sick Leave,2021-11-26,2021-12-06,Medical Appointment
+170,61,Late Coming,2019-12-15,2019-12-15,Taking child to hospital
+171,62,Sick Leave,2024-09-23,2024-09-29,Flu
+172,62,Unpaid Leave,2022-01-03,2022-01-09,Personal Projects
+173,62,Vacation,2020-09-24,2020-09-28,Vacation
+174,62,Unpaid Leave,2023-08-15,2023-08-16,Personal Projects
+175,62,Late Coming,2020-06-26,2020-06-26,Backlog of work
+176,63,Late Coming,2024-05-03,2024-05-03,Sick child
+177,63,Sick Leave,2023-11-17,2023-11-19,Injury
+178,63,Unpaid Leave,2023-06-07,2023-06-11,Extended Travel
+179,63,Unpaid Leave,2021-02-26,2021-03-01,Extended Travel
+180,64,Personal Leave,2023-07-29,2023-08-06,Personal Leave
+181,64,Vacation,2020-05-27,2020-06-05,Vacation
+182,64,Unpaid Leave,2024-08-30,2024-09-09,Extended Travel
+183,66,Sick Leave,2024-01-27,2024-01-31,Medical Appointment
+184,66,Unpaid Leave,2024-03-20,2024-03-25,Extended Travel
+185,68,Personal Leave,2021-04-04,2021-04-06,Personal Leave
+186,68,Vacation,2019-12-31,2020-01-03,Vacation
+187,69,Unpaid Leave,2023-03-05,2023-03-10,Personal Projects
+188,69,Late Coming,2021-11-05,2021-11-05,BTS breakdown
+189,69,Late Coming,2023-11-30,2023-11-30,Taking child to hospital
+190,69,Unpaid Leave,2024-02-23,2024-03-01,Extended Travel
+191,69,Late Coming,2021-05-20,2021-05-20,Urgent project deadline
+192,70,Vacation,2021-04-25,2021-05-04,Vacation
+193,70,Late Coming,2020-06-04,2020-06-04,BTS breakdown
+194,70,Sick Leave,2020-07-31,2020-08-06,Flu
+195,71,Sick Leave,2024-05-05,2024-05-10,Flu
+196,72,Personal Leave,2024-09-15,2024-09-21,Personal Leave
+197,72,Personal Leave,2023-10-27,2023-10-29,Personal Leave
+198,72,Sick Leave,2021-07-25,2021-07-31,Injury
+199,72,Sick Leave,2023-07-25,2023-08-02,Injury
+200,72,Late Coming,2021-10-08,2021-10-08,Sick child
+201,74,Unpaid Leave,2020-06-21,2020-06-25,Extended Travel
+202,74,Late Coming,2021-03-07,2021-03-07,Computer malfunction
+203,74,Sick Leave,2020-02-28,2020-03-04,Injury
+204,74,Unpaid Leave,2023-12-19,2023-12-23,Personal Projects
+205,75,Late Coming,2023-07-08,2023-07-08,Computer malfunction
+206,75,Personal Leave,2023-11-04,2023-11-13,Personal Leave
+207,75,Personal Leave,2023-06-07,2023-06-16,Personal Leave
+208,75,Vacation,2022-08-26,2022-08-28,Vacation
+209,76,Vacation,2021-10-17,2021-10-18,Vacation
+210,77,Vacation,2022-05-15,2022-05-21,Vacation
+211,77,Unpaid Leave,2021-09-29,2021-10-05,Personal Projects
+212,78,Sick Leave,2023-12-18,2023-12-26,Medical Appointment
+213,79,Unpaid Leave,2021-08-03,2021-08-04,Personal Projects
+214,80,Late Coming,2022-09-12,2022-09-12,Urgent project deadline
+215,80,Sick Leave,2021-01-25,2021-01-27,Medical Appointment
+216,80,Vacation,2024-05-18,2024-05-27,Vacation
+217,80,Personal Leave,2021-04-29,2021-05-09,Personal Leave
+218,80,Unpaid Leave,2021-10-01,2021-10-07,Extended Travel
+219,82,Unpaid Leave,2021-12-29,2022-01-03,Extended Travel
+220,82,Late Coming,2021-10-11,2021-10-11,Taking child to hospital
+221,82,Personal Leave,2022-05-17,2022-05-22,Personal Leave
+222,83,Sick Leave,2022-06-03,2022-06-12,Flu
+223,83,Unpaid Leave,2023-01-05,2023-01-10,Extended Travel
+224,83,Unpaid Leave,2023-04-05,2023-04-13,Extended Travel
+225,83,Unpaid Leave,2023-03-03,2023-03-11,Extended Travel
+226,84,Unpaid Leave,2020-09-20,2020-09-25,Personal Projects
+227,84,Sick Leave,2022-12-10,2022-12-14,Flu
+228,84,Vacation,2023-06-01,2023-06-08,Vacation
+229,85,Sick Leave,2024-06-14,2024-06-22,Flu
+230,85,Personal Leave,2023-07-17,2023-07-23,Personal Leave
+231,85,Sick Leave,2024-04-11,2024-04-21,Flu
+232,85,Late Coming,2022-02-20,2022-02-20,Computer malfunction
+233,85,Personal Leave,2024-02-19,2024-02-29,Personal Leave
+234,86,Vacation,2021-02-21,2021-02-28,Vacation
+235,86,Late Coming,2023-09-21,2023-09-21,Roads impassable
+236,86,Vacation,2024-01-30,2024-02-03,Vacation
+237,86,Sick Leave,2021-03-25,2021-03-31,Medical Appointment
+238,89,Unpaid Leave,2021-08-31,2021-09-07,Personal Projects
+239,89,Vacation,2022-07-18,2022-07-22,Vacation
+240,89,Vacation,2020-08-18,2020-08-28,Vacation
+241,89,Late Coming,2022-09-16,2022-09-16,Backlog of work
+242,90,Personal Leave,2020-12-11,2020-12-17,Personal Leave
+243,91,Vacation,2020-11-02,2020-11-10,Vacation
+244,91,Late Coming,2021-01-21,2021-01-21,Traffic jam
+245,91,Sick Leave,2022-05-08,2022-05-10,Flu
+246,91,Late Coming,2020-02-10,2020-02-10,Backlog of work
+247,91,Vacation,2020-11-13,2020-11-16,Vacation
+248,92,Personal Leave,2021-08-26,2021-08-29,Personal Leave
+249,92,Personal Leave,2021-06-13,2021-06-16,Personal Leave
+250,92,Vacation,2022-12-10,2022-12-18,Vacation
+251,92,Personal Leave,2020-01-19,2020-01-26,Personal Leave
+252,92,Personal Leave,2021-06-15,2021-06-16,Personal Leave
+253,93,Late Coming,2021-07-29,2021-07-29,Roads impassable
+254,93,Vacation,2020-02-11,2020-02-20,Vacation
+255,93,Late Coming,2024-01-19,2024-01-19,Internet outage
+256,93,Vacation,2022-08-07,2022-08-14,Vacation
+257,94,Late Coming,2021-04-29,2021-04-29,Flooded
+258,94,Unpaid Leave,2023-09-25,2023-10-04,Extended Travel
+259,95,Unpaid Leave,2021-02-04,2021-02-09,Extended Travel
+260,95,Late Coming,2023-10-17,2023-10-17,Taking child to hospital
+261,95,Sick Leave,2020-11-23,2020-11-27,Flu
+262,95,Unpaid Leave,2021-12-14,2021-12-20,Extended Travel
+263,97,Late Coming,2021-09-27,2021-09-27,Traffic jam
+264,97,Sick Leave,2022-02-19,2022-02-28,Flu
+265,98,Sick Leave,2021-01-21,2021-01-24,Injury
+266,99,Personal Leave,2022-02-24,2022-02-25,Personal Leave
+267,99,Unpaid Leave,2022-08-24,2022-08-25,Personal Projects
+268,99,Unpaid Leave,2020-12-01,2020-12-10,Extended Travel
+269,99,Sick Leave,2024-08-06,2024-08-16,Medical Appointment

@@ -1,0 +1,553 @@
+Task_ID,Task_Type,Task_Complexity,Start_Date_Task,Due_Date_Task,Assigned_Employee_ID,Estimated_Hours,Actual_Hours,Status_Task
+1,Analysis,Medium,23-01-2024,14-02-2024,1,14,0,Not Started
+2,Documentation,Easy,16-01-2025,15-02-2025,1,33,11,In Progress
+3,Documentation,Easy,23-08-2023,08-09-2023,2,28,0,Not Started
+4,Consulting,Medium,07-11-2024,07-12-2024,2,39,10,In Progress
+5,Analysis,Medium,24-03-2025,17-04-2025,2,5,0,Not Started
+6,Documentation,Easy,31-08-2024,16-09-2024,2,25,0,Not Started
+7,Analysis,Medium,20-04-2023,05-05-2023,2,18,5,In Progress
+8,Analysis,Medium,18-10-2023,02-11-2023,2,35,0,On Hold
+9,Consulting,Medium,10-09-2023,06-10-2023,2,6,3,Completed
+10,Analysis,Medium,13-11-2023,24-11-2023,2,36,1,In Progress
+11,Documentation,Easy,22-10-2024,20-11-2024,3,16,0,On Hold
+12,Consulting,Medium,27-12-2024,08-01-2025,3,5,0,On Hold
+13,Documentation,Easy,13-07-2024,31-07-2024,3,23,0,Not Started
+14,Consulting,Medium,18-01-2024,14-02-2024,4,6,39,Completed
+15,Consulting,Medium,14-12-2023,27-12-2023,4,8,0,Not Started
+16,Documentation,Easy,12-06-2023,24-06-2023,4,17,38,Completed
+17,Consulting,Medium,12-05-2023,04-06-2023,4,10,33,Completed
+18,Documentation,Easy,20-08-2023,10-09-2023,4,8,28,Completed
+19,Consulting,Medium,12-05-2023,11-06-2023,4,17,0,On Hold
+20,Consulting,Medium,04-11-2024,12-11-2024,4,13,0,On Hold
+21,Analysis,Medium,27-06-2023,07-07-2023,4,7,4,In Progress
+22,Consulting,Medium,25-05-2023,24-06-2023,4,17,0,On Hold
+23,Consulting,Medium,06-11-2023,13-11-2023,5,34,18,Completed
+24,Documentation,Easy,22-03-2025,17-04-2025,6,10,35,Completed
+25,Consulting,Medium,05-03-2024,25-03-2024,6,32,32,Completed
+26,Consulting,Medium,23-09-2024,04-10-2024,6,14,34,In Progress
+27,Consulting,Medium,19-03-2024,16-04-2024,6,39,29,In Progress
+28,Analysis,Medium,06-04-2024,25-04-2024,6,20,0,Not Started
+29,Consulting,Medium,30-01-2024,21-02-2024,7,12,3,In Progress
+30,Consulting,Medium,26-08-2024,21-09-2024,8,6,0,On Hold
+31,Analysis,Medium,23-01-2024,02-02-2024,8,30,38,Completed
+32,Documentation,Easy,11-03-2024,05-04-2024,8,8,35,Completed
+33,Documentation,Easy,06-09-2024,17-09-2024,8,5,0,On Hold
+34,Analysis,Medium,26-11-2024,05-12-2024,8,18,0,Not Started
+35,Analysis,Medium,21-09-2024,17-10-2024,8,38,26,In Progress
+36,Consulting,Medium,20-03-2023,19-04-2023,8,10,0,On Hold
+37,Consulting,Medium,18-11-2023,03-12-2023,8,40,18,Completed
+38,Consulting,Medium,04-09-2024,21-09-2024,9,22,14,Completed
+39,Analysis,Medium,04-09-2024,03-10-2024,9,7,0,Not Started
+40,Documentation,Easy,04-09-2024,28-09-2024,9,33,4,In Progress
+41,Documentation,Easy,20-11-2024,04-12-2024,9,18,0,Not Started
+42,Documentation,Easy,14-02-2025,26-02-2025,9,31,9,In Progress
+43,Consulting,Medium,04-09-2024,24-09-2024,9,27,35,In Progress
+44,Analysis,Medium,04-09-2024,27-09-2024,9,27,30,Completed
+45,Analysis,Medium,04-02-2025,27-02-2025,9,24,0,Not Started
+46,Documentation,Easy,04-09-2024,12-09-2024,9,6,0,Not Started
+47,Analysis,Medium,01-02-2025,25-02-2025,9,36,39,In Progress
+48,Analysis,Medium,26-12-2024,03-01-2025,10,31,4,In Progress
+49,Consulting,Medium,03-11-2023,02-12-2023,10,9,15,In Progress
+50,Documentation,Easy,03-11-2023,10-11-2023,10,35,0,Not Started
+51,Analysis,Medium,02-09-2024,02-10-2024,10,17,9,Completed
+52,Analysis,Medium,12-04-2024,20-04-2024,10,16,0,Not Started
+53,Analysis,Medium,26-06-2024,14-07-2024,10,28,0,Not Started
+54,Documentation,Easy,11-03-2025,21-03-2025,10,40,0,Not Started
+55,Analysis,Medium,22-03-2024,10-04-2024,11,6,14,In Progress
+56,Analysis,Medium,21-10-2023,31-10-2023,11,35,20,In Progress
+57,Documentation,Easy,22-05-2024,29-05-2024,11,15,0,On Hold
+58,Analysis,Medium,12-01-2024,05-02-2024,11,19,0,Not Started
+59,Documentation,Easy,21-10-2023,30-10-2023,11,39,0,Not Started
+60,Documentation,Easy,14-03-2025,12-04-2025,12,14,23,In Progress
+61,Documentation,Easy,22-05-2023,31-05-2023,12,9,0,Not Started
+62,Documentation,Easy,07-04-2023,23-04-2023,12,17,4,Completed
+63,Documentation,Easy,05-04-2023,22-04-2023,12,18,40,In Progress
+64,Documentation,Easy,09-01-2023,17-01-2023,12,39,28,Completed
+65,Analysis,Medium,13-03-2023,01-04-2023,12,39,0,On Hold
+66,Analysis,Medium,10-01-2023,17-01-2023,12,14,0,Not Started
+67,Analysis,Medium,24-02-2024,20-03-2024,12,14,0,Not Started
+68,Analysis,Medium,26-09-2024,19-10-2024,12,36,0,Not Started
+69,Consulting,Medium,01-06-2024,30-06-2024,12,35,31,In Progress
+70,Documentation,Easy,10-10-2023,21-10-2023,13,35,1,Completed
+71,Consulting,Medium,25-12-2024,02-01-2025,13,38,18,Completed
+72,Analysis,Medium,10-10-2023,05-11-2023,13,9,23,Completed
+73,Consulting,Medium,10-10-2023,19-10-2023,13,33,0,On Hold
+74,Documentation,Easy,02-01-2025,10-01-2025,13,8,0,On Hold
+75,Analysis,Medium,10-10-2023,25-10-2023,13,35,13,In Progress
+76,Consulting,Medium,01-11-2024,27-11-2024,13,21,14,In Progress
+77,Documentation,Easy,06-08-2023,25-08-2023,14,25,15,Completed
+78,Analysis,Medium,14-09-2024,21-09-2024,14,15,15,In Progress
+79,Consulting,Medium,15-02-2024,25-02-2024,14,39,3,Completed
+80,Documentation,Easy,03-02-2023,01-03-2023,14,8,0,On Hold
+81,Consulting,Medium,27-02-2025,10-03-2025,14,31,20,Completed
+82,Consulting,Medium,09-08-2023,04-09-2023,14,18,0,Not Started
+83,Consulting,Medium,12-09-2023,10-10-2023,15,33,34,In Progress
+84,Consulting,Medium,24-09-2024,14-10-2024,15,8,0,On Hold
+85,Documentation,Easy,03-02-2023,05-03-2023,15,36,0,On Hold
+86,Analysis,Medium,21-03-2025,12-04-2025,15,23,37,In Progress
+87,Analysis,Medium,21-10-2023,15-11-2023,16,11,36,Completed
+88,Analysis,Medium,29-11-2023,12-12-2023,16,33,34,Completed
+89,Analysis,Medium,11-06-2023,18-06-2023,16,13,4,In Progress
+90,Analysis,Medium,11-06-2023,02-07-2023,16,38,5,Completed
+91,Analysis,Medium,21-03-2024,05-04-2024,16,37,15,Completed
+92,Documentation,Easy,24-12-2023,18-01-2024,16,26,0,On Hold
+93,Consulting,Medium,12-12-2023,09-01-2024,16,22,0,Not Started
+94,Consulting,Medium,12-12-2024,22-12-2024,16,7,2,In Progress
+95,Analysis,Medium,02-06-2024,27-06-2024,16,29,0,On Hold
+96,Analysis,Medium,17-04-2024,06-05-2024,17,11,15,In Progress
+97,Documentation,Easy,24-08-2023,03-09-2023,17,11,0,Not Started
+98,Documentation,Easy,29-12-2024,25-01-2025,17,5,0,On Hold
+99,Consulting,Medium,25-03-2025,21-04-2025,17,25,3,In Progress
+100,Analysis,Medium,24-08-2023,31-08-2023,17,33,0,Not Started
+101,Analysis,Medium,26-06-2024,12-07-2024,17,13,0,On Hold
+102,Documentation,Easy,06-04-2024,06-05-2024,18,33,0,On Hold
+103,Consulting,Medium,10-06-2024,03-07-2024,19,23,11,In Progress
+104,Documentation,Easy,11-09-2023,08-10-2023,19,35,23,Completed
+105,Consulting,Medium,29-10-2023,12-11-2023,19,27,0,Not Started
+106,Consulting,Medium,25-02-2024,21-03-2024,19,13,6,In Progress
+107,Analysis,Medium,06-03-2025,14-03-2025,19,18,15,In Progress
+108,Documentation,Easy,19-02-2024,08-03-2024,19,20,40,In Progress
+109,Analysis,Medium,28-05-2024,18-06-2024,19,7,23,Completed
+110,Consulting,Medium,11-02-2025,20-02-2025,19,7,23,Completed
+111,Consulting,Medium,23-03-2023,22-04-2023,19,28,6,Completed
+112,Consulting,Medium,12-04-2024,24-04-2024,19,33,17,In Progress
+113,Analysis,Medium,18-08-2024,30-08-2024,20,33,0,Not Started
+114,Analysis,Medium,30-07-2024,06-08-2024,20,15,36,In Progress
+115,Documentation,Easy,30-07-2024,07-08-2024,20,16,6,In Progress
+116,Documentation,Easy,18-01-2025,12-02-2025,20,9,0,Not Started
+117,Consulting,Medium,22-03-2025,09-04-2025,20,17,5,In Progress
+118,Consulting,Medium,04-11-2023,19-11-2023,21,36,0,Not Started
+119,Consulting,Medium,22-03-2025,15-04-2025,21,7,35,In Progress
+120,Consulting,Medium,10-06-2024,24-06-2024,22,36,29,In Progress
+121,Research,Complex,30-04-2024,30-05-2024,23,19,0,On Hold
+122,Consulting,Medium,11-01-2025,22-01-2025,23,28,0,On Hold
+123,Analysis,Medium,29-07-2024,22-08-2024,24,28,0,Not Started
+124,Consulting,Medium,03-03-2025,25-03-2025,24,5,0,Not Started
+125,Analysis,Medium,12-02-2025,01-03-2025,24,37,0,Not Started
+126,Consulting,Medium,03-02-2023,17-02-2023,25,22,0,Not Started
+127,Consulting,Medium,24-05-2023,21-06-2023,26,23,0,On Hold
+128,Research,Complex,11-11-2023,10-12-2023,26,34,30,In Progress
+129,Analysis,Medium,14-12-2023,25-12-2023,27,31,0,On Hold
+130,Consulting,Medium,24-09-2024,10-10-2024,27,38,0,On Hold
+131,Analysis,Medium,26-03-2024,13-04-2024,27,15,6,In Progress
+132,Consulting,Medium,12-03-2023,11-04-2023,27,37,0,Not Started
+133,Research,Complex,22-04-2024,02-05-2024,27,31,0,On Hold
+134,Consulting,Medium,22-08-2023,11-09-2023,27,32,0,On Hold
+135,Research,Complex,29-12-2023,19-01-2024,27,36,0,On Hold
+136,Research,Complex,30-07-2023,16-08-2023,27,14,0,On Hold
+137,Analysis,Medium,28-05-2024,10-06-2024,28,5,0,Not Started
+138,Consulting,Medium,30-07-2023,28-08-2023,28,17,0,On Hold
+139,Consulting,Medium,03-01-2023,14-01-2023,28,27,37,In Progress
+140,Research,Complex,06-01-2023,21-01-2023,29,18,0,On Hold
+141,Consulting,Medium,17-04-2024,26-04-2024,29,32,0,On Hold
+142,Consulting,Medium,20-07-2023,17-08-2023,29,7,0,Not Started
+143,Research,Complex,06-09-2023,20-09-2023,29,13,39,Completed
+144,Consulting,Medium,30-10-2023,23-11-2023,29,28,32,Completed
+145,Research,Complex,14-02-2024,29-02-2024,29,19,9,Completed
+146,Research,Complex,11-03-2024,19-03-2024,29,30,20,In Progress
+147,Consulting,Medium,16-10-2024,29-10-2024,29,17,26,In Progress
+148,Consulting,Medium,13-05-2023,12-06-2023,29,13,4,In Progress
+149,Consulting,Medium,18-03-2025,06-04-2025,29,37,0,On Hold
+150,Research,Complex,14-05-2024,01-06-2024,30,27,0,Not Started
+151,Consulting,Medium,21-07-2023,06-08-2023,30,7,0,On Hold
+152,Research,Complex,04-01-2025,27-01-2025,30,16,0,On Hold
+153,Research,Complex,06-04-2024,18-04-2024,30,21,0,Not Started
+154,Training,Medium,10-02-2024,19-02-2024,31,28,9,In Progress
+155,Consulting,Medium,24-03-2024,14-04-2024,31,35,17,In Progress
+156,Training,Medium,22-01-2024,18-02-2024,31,28,0,On Hold
+157,Consulting,Medium,11-04-2024,19-04-2024,31,29,0,Not Started
+158,Consulting,Medium,07-09-2024,05-10-2024,31,35,29,In Progress
+159,Consulting,Medium,23-07-2023,18-08-2023,31,16,0,Not Started
+160,Consulting,Medium,08-05-2023,03-06-2023,31,30,0,Not Started
+161,Consulting,Medium,13-09-2023,07-10-2023,31,20,0,On Hold
+162,Training,Medium,13-10-2023,08-11-2023,31,22,0,On Hold
+163,Training,Medium,08-03-2023,15-03-2023,31,7,2,In Progress
+164,Training,Medium,11-04-2023,09-05-2023,32,14,0,On Hold
+165,Training,Medium,07-08-2024,20-08-2024,32,40,19,In Progress
+166,Consulting,Medium,18-01-2024,16-02-2024,33,16,0,On Hold
+167,Training,Medium,21-05-2024,19-06-2024,33,38,36,Completed
+168,Training,Medium,02-03-2023,11-03-2023,33,23,31,In Progress
+169,Consulting,Medium,27-03-2024,06-04-2024,33,24,0,Not Started
+170,Consulting,Medium,10-03-2025,09-04-2025,33,22,0,On Hold
+171,Training,Medium,29-02-2024,12-03-2024,33,11,12,Completed
+172,Training,Medium,25-09-2023,12-10-2023,34,7,20,In Progress
+173,Training,Medium,23-09-2023,19-10-2023,34,5,0,On Hold
+174,Consulting,Medium,17-09-2024,29-09-2024,34,16,39,Completed
+175,Consulting,Medium,25-05-2024,09-06-2024,35,30,0,On Hold
+176,Training,Medium,05-01-2023,21-01-2023,35,30,16,In Progress
+177,Training,Medium,17-07-2023,10-08-2023,35,19,36,Completed
+178,Training,Medium,27-09-2023,11-10-2023,35,36,0,Not Started
+179,Analysis,Medium,27-11-2023,24-12-2023,36,30,25,In Progress
+180,Analysis,Medium,16-02-2025,24-02-2025,36,8,0,On Hold
+181,Analysis,Medium,11-03-2024,09-04-2024,36,5,0,Not Started
+182,Analysis,Medium,14-09-2024,11-10-2024,36,10,33,Completed
+183,Reporting,Easy,13-12-2023,10-01-2024,36,6,11,Completed
+184,Data Entry,Easy,23-02-2025,18-03-2025,37,26,0,On Hold
+185,Data Entry,Easy,06-03-2024,30-03-2024,37,35,0,Not Started
+186,Data Entry,Easy,08-02-2025,16-02-2025,37,21,6,Completed
+187,Reporting,Easy,07-05-2024,01-06-2024,37,8,15,In Progress
+188,Analysis,Medium,11-12-2023,08-01-2024,37,22,0,Not Started
+189,Data Entry,Easy,06-09-2024,06-10-2024,37,10,0,On Hold
+190,Data Entry,Easy,05-08-2024,19-08-2024,37,8,18,Completed
+191,Reporting,Easy,12-04-2023,09-05-2023,37,9,14,In Progress
+192,Data Entry,Easy,16-03-2025,04-04-2025,38,13,0,Not Started
+193,Data Entry,Easy,02-06-2024,16-06-2024,38,31,38,Completed
+194,Reporting,Easy,18-01-2024,13-02-2024,38,5,0,On Hold
+195,Data Entry,Easy,09-06-2023,16-06-2023,39,33,0,On Hold
+196,Data Entry,Easy,18-03-2025,13-04-2025,39,23,37,In Progress
+197,Data Entry,Easy,24-08-2023,14-09-2023,39,5,30,Completed
+198,Analysis,Medium,14-11-2024,27-11-2024,39,24,30,Completed
+199,Analysis,Medium,11-02-2025,05-03-2025,39,7,37,Completed
+200,Analysis,Medium,13-03-2025,26-03-2025,39,38,22,Completed
+201,Analysis,Medium,13-12-2024,12-01-2025,39,38,20,Completed
+202,Reporting,Easy,25-04-2024,06-05-2024,39,8,16,In Progress
+203,Reporting,Easy,27-01-2025,11-02-2025,40,20,12,Completed
+204,Analysis,Medium,27-09-2023,25-10-2023,40,22,0,Not Started
+205,Analysis,Medium,03-11-2023,01-12-2023,41,34,22,In Progress
+206,Data Entry,Easy,02-08-2024,29-08-2024,42,21,0,On Hold
+207,Analysis,Medium,09-07-2024,27-07-2024,42,26,0,Not Started
+208,Analysis,Medium,14-05-2024,21-05-2024,43,31,15,In Progress
+209,Data Entry,Easy,29-07-2023,17-08-2023,43,22,0,Not Started
+210,Reporting,Easy,31-08-2023,21-09-2023,43,10,0,Not Started
+211,Reporting,Easy,07-01-2024,31-01-2024,43,27,0,On Hold
+212,Data Entry,Easy,12-09-2024,02-10-2024,44,15,8,In Progress
+213,Data Entry,Easy,22-06-2024,14-07-2024,44,31,34,In Progress
+214,Analysis,Medium,03-11-2023,27-11-2023,44,36,0,On Hold
+215,Analysis,Medium,11-01-2024,18-01-2024,44,10,30,Completed
+216,Data Entry,Easy,27-11-2023,10-12-2023,45,9,0,On Hold
+217,Analysis,Medium,20-10-2023,28-10-2023,45,28,8,In Progress
+218,Data Entry,Easy,31-03-2025,14-04-2025,45,12,35,In Progress
+219,Reporting,Easy,12-05-2023,11-06-2023,45,17,0,On Hold
+220,Data Entry,Easy,11-06-2023,18-06-2023,45,17,32,Completed
+221,General Task,Easy,18-04-2024,17-05-2024,46,12,5,Completed
+222,General Task,Easy,20-12-2023,30-12-2023,46,17,0,On Hold
+223,General Task,Easy,22-12-2024,30-12-2024,46,29,22,In Progress
+224,General Task,Easy,23-05-2024,08-06-2024,46,10,31,In Progress
+225,General Task,Easy,16-06-2023,11-07-2023,46,12,8,In Progress
+226,General Task,Easy,16-06-2023,07-07-2023,46,22,34,Completed
+227,General Task,Easy,17-11-2023,24-11-2023,46,6,0,Not Started
+228,General Task,Easy,18-04-2024,01-05-2024,46,34,0,Not Started
+229,General Task,Easy,16-06-2023,14-07-2023,46,37,22,In Progress
+230,General Task,Easy,14-06-2024,09-07-2024,46,33,32,In Progress
+231,General Task,Easy,19-01-2025,17-02-2025,47,37,33,In Progress
+232,General Task,Easy,12-06-2024,26-06-2024,47,16,0,On Hold
+233,General Task,Easy,26-09-2024,26-10-2024,47,17,38,In Progress
+234,General Task,Easy,10-11-2024,24-11-2024,47,9,0,Not Started
+235,General Task,Easy,12-10-2023,30-10-2023,48,6,0,On Hold
+236,General Task,Easy,16-03-2024,25-03-2024,48,5,0,Not Started
+237,General Task,Easy,03-05-2023,28-05-2023,48,30,0,On Hold
+238,General Task,Easy,01-09-2023,29-09-2023,48,17,0,Not Started
+239,General Task,Easy,23-09-2024,06-10-2024,48,37,0,On Hold
+240,General Task,Easy,29-10-2023,14-11-2023,48,27,37,In Progress
+241,General Task,Easy,29-01-2023,10-02-2023,48,32,0,Not Started
+242,General Task,Easy,27-09-2024,10-10-2024,48,38,0,Not Started
+243,General Task,Easy,08-05-2023,06-06-2023,48,9,0,Not Started
+244,General Task,Easy,29-08-2024,22-09-2024,49,14,15,Completed
+245,General Task,Easy,02-05-2023,25-05-2023,49,22,25,Completed
+246,General Task,Easy,22-01-2024,12-02-2024,49,21,29,Completed
+247,General Task,Easy,02-05-2023,15-05-2023,49,14,12,In Progress
+248,General Task,Easy,07-09-2023,23-09-2023,50,30,12,Completed
+249,General Task,Easy,24-02-2023,22-03-2023,50,18,16,In Progress
+250,General Task,Easy,15-09-2023,07-10-2023,50,19,8,In Progress
+251,General Task,Easy,10-05-2023,31-05-2023,50,32,7,In Progress
+252,General Task,Easy,05-06-2024,14-06-2024,50,7,34,In Progress
+253,General Task,Easy,24-10-2023,07-11-2023,51,22,39,In Progress
+254,General Task,Easy,26-12-2023,14-01-2024,51,32,0,On Hold
+255,General Task,Easy,11-06-2024,01-07-2024,51,11,0,On Hold
+256,General Task,Easy,21-05-2024,18-06-2024,51,7,29,Completed
+257,General Task,Easy,25-12-2024,14-01-2025,51,22,24,In Progress
+258,General Task,Easy,24-02-2024,24-03-2024,51,26,0,Not Started
+259,General Task,Easy,24-10-2023,14-11-2023,51,36,7,Completed
+260,General Task,Easy,13-11-2023,30-11-2023,51,17,0,Not Started
+261,Coding,Complex,05-10-2023,03-11-2023,52,39,0,On Hold
+262,Coding,Complex,19-12-2024,30-12-2024,52,34,0,On Hold
+263,Coding,Complex,09-03-2025,21-03-2025,52,31,0,Not Started
+264,Testing,Medium,11-04-2024,20-04-2024,52,32,0,On Hold
+265,Coding,Complex,20-08-2023,12-09-2023,52,13,0,On Hold
+266,Coding,Complex,26-06-2024,08-07-2024,52,39,0,Not Started
+267,Coding,Complex,17-07-2023,02-08-2023,52,26,5,Completed
+268,Testing,Medium,20-09-2024,30-09-2024,53,5,21,In Progress
+269,Testing,Medium,24-11-2024,17-12-2024,53,18,30,Completed
+270,Coding,Complex,03-05-2024,25-05-2024,53,34,0,On Hold
+271,Coding,Complex,29-04-2024,22-05-2024,53,30,0,On Hold
+272,Testing,Medium,10-01-2025,02-02-2025,53,16,28,In Progress
+273,Testing,Medium,28-01-2023,23-02-2023,53,16,15,Completed
+274,Coding,Complex,11-01-2023,21-01-2023,53,18,0,Not Started
+275,Coding,Complex,10-10-2023,21-10-2023,53,25,13,In Progress
+276,Coding,Complex,07-01-2025,22-01-2025,54,38,0,Not Started
+277,Testing,Medium,30-05-2024,19-06-2024,54,29,0,Not Started
+278,Coding,Complex,22-01-2023,17-02-2023,54,6,0,Not Started
+279,Testing,Medium,17-12-2024,02-01-2025,54,15,0,Not Started
+280,Testing,Medium,30-12-2023,22-01-2024,54,10,40,In Progress
+281,Coding,Complex,06-04-2024,26-04-2024,54,20,0,Not Started
+282,Coding,Complex,21-07-2023,19-08-2023,54,30,0,On Hold
+283,Testing,Medium,28-07-2024,18-08-2024,54,31,0,On Hold
+284,Testing,Medium,01-04-2025,17-04-2025,54,21,24,Completed
+285,Coding,Complex,31-10-2024,08-11-2024,55,10,0,On Hold
+286,Coding,Complex,25-02-2024,06-03-2024,55,8,0,On Hold
+287,Coding,Complex,04-03-2023,03-04-2023,55,22,22,In Progress
+288,Testing,Medium,27-03-2024,18-04-2024,55,29,0,Not Started
+289,Coding,Complex,17-10-2024,27-10-2024,55,23,0,On Hold
+290,Testing,Medium,10-11-2024,10-12-2024,55,20,2,Completed
+291,Testing,Medium,22-10-2023,21-11-2023,55,19,0,Not Started
+292,Coding,Complex,05-01-2025,16-01-2025,56,31,0,Not Started
+293,Testing,Medium,29-08-2023,27-09-2023,56,35,17,In Progress
+294,Testing,Medium,10-02-2023,11-03-2023,56,5,24,In Progress
+295,Testing,Medium,30-11-2024,19-12-2024,56,24,9,Completed
+296,Testing,Medium,23-07-2024,01-08-2024,57,20,0,On Hold
+297,Testing,Medium,11-11-2023,02-12-2023,57,25,0,On Hold
+298,Coding,Complex,10-10-2023,22-10-2023,58,34,16,Completed
+299,Coding,Complex,14-04-2024,25-04-2024,58,31,20,Completed
+300,Coding,Complex,04-12-2023,13-12-2023,58,21,15,Completed
+301,Testing,Medium,13-10-2023,20-10-2023,58,16,0,On Hold
+302,Coding,Complex,14-02-2023,26-02-2023,58,18,0,On Hold
+303,Testing,Medium,13-12-2023,09-01-2024,58,27,0,Not Started
+304,Testing,Medium,09-09-2024,17-09-2024,58,12,0,Not Started
+305,Coding,Complex,21-03-2025,03-04-2025,58,37,0,On Hold
+306,Coding,Complex,11-02-2025,06-03-2025,58,17,10,In Progress
+307,Coding,Complex,03-02-2023,10-02-2023,58,40,11,In Progress
+308,Design,Complex,22-11-2023,05-12-2023,59,33,4,In Progress
+309,Research,Complex,25-12-2023,04-01-2024,59,20,0,On Hold
+310,Design,Complex,02-01-2024,29-01-2024,59,13,0,On Hold
+311,Design,Complex,26-09-2023,15-10-2023,59,28,15,Completed
+312,Design,Complex,25-07-2024,19-08-2024,60,38,26,In Progress
+313,Design,Complex,29-01-2023,11-02-2023,60,31,8,Completed
+314,Research,Complex,08-03-2024,29-03-2024,60,5,10,Completed
+315,Research,Complex,19-11-2023,06-12-2023,60,24,0,On Hold
+316,Design,Complex,22-09-2023,07-10-2023,60,31,0,On Hold
+317,Design,Complex,17-05-2024,03-06-2024,61,6,10,Completed
+318,Research,Complex,19-03-2023,05-04-2023,61,12,5,Completed
+319,Design,Complex,22-10-2024,02-11-2024,61,20,0,Not Started
+320,Design,Complex,13-09-2024,24-09-2024,61,29,0,On Hold
+321,Research,Complex,27-09-2023,13-10-2023,61,40,0,On Hold
+322,Design,Complex,24-06-2023,18-07-2023,61,36,11,Completed
+323,Research,Complex,13-06-2023,10-07-2023,61,34,0,Not Started
+324,Reporting,Easy,30-03-2025,14-04-2025,62,7,16,In Progress
+325,Reporting,Easy,17-12-2024,25-12-2024,62,7,0,On Hold
+326,Documentation,Easy,29-12-2023,27-01-2024,62,17,0,Not Started
+327,Reporting,Easy,11-05-2024,29-05-2024,62,40,27,In Progress
+328,Reporting,Easy,02-04-2023,02-05-2023,62,32,37,Completed
+329,Documentation,Easy,13-05-2023,29-05-2023,62,24,0,On Hold
+330,Reporting,Easy,08-02-2023,23-02-2023,62,17,24,In Progress
+331,Documentation,Easy,10-01-2023,24-01-2023,62,28,0,Not Started
+332,Documentation,Easy,27-09-2023,16-10-2023,62,9,0,On Hold
+333,Documentation,Easy,16-03-2025,29-03-2025,62,30,0,On Hold
+334,Documentation,Easy,28-02-2023,23-03-2023,63,26,12,In Progress
+335,Documentation,Easy,23-01-2024,01-02-2024,63,11,0,Not Started
+336,Reporting,Easy,29-10-2023,16-11-2023,63,29,16,Completed
+337,Reporting,Easy,27-01-2025,03-02-2025,64,18,0,Not Started
+338,Documentation,Easy,15-11-2023,07-12-2023,64,38,0,Not Started
+339,Documentation,Easy,07-03-2025,20-03-2025,64,18,22,Completed
+340,Reporting,Easy,29-10-2023,24-11-2023,64,21,0,Not Started
+341,Documentation,Easy,30-09-2024,07-10-2024,64,9,15,Completed
+342,Documentation,Easy,26-08-2024,04-09-2024,64,28,0,On Hold
+343,Reporting,Easy,02-03-2023,29-03-2023,64,33,8,In Progress
+344,Documentation,Easy,15-07-2023,30-07-2023,65,25,2,In Progress
+345,Documentation,Easy,05-02-2025,15-02-2025,65,35,13,In Progress
+346,Reporting,Easy,10-08-2024,17-08-2024,65,40,31,Completed
+347,Reporting,Easy,01-12-2024,16-12-2024,65,6,0,Not Started
+348,Documentation,Easy,23-09-2023,13-10-2023,65,23,0,Not Started
+349,Documentation,Easy,28-08-2023,18-09-2023,66,31,16,Completed
+350,Documentation,Easy,19-09-2023,09-10-2023,66,6,5,In Progress
+351,Documentation,Easy,28-08-2023,14-09-2023,66,22,34,Completed
+352,Documentation,Easy,20-06-2024,08-07-2024,66,35,33,Completed
+353,Reporting,Easy,28-08-2023,24-09-2023,66,12,0,On Hold
+354,Reporting,Easy,15-12-2023,22-12-2023,67,15,0,Not Started
+355,Documentation,Easy,03-11-2023,27-11-2023,67,8,40,In Progress
+356,Reporting,Easy,03-11-2023,24-11-2023,67,29,5,Completed
+357,Documentation,Easy,22-07-2024,07-08-2024,67,6,0,On Hold
+358,Documentation,Easy,25-04-2024,08-05-2024,67,27,11,In Progress
+359,Reporting,Easy,27-08-2024,20-09-2024,67,39,21,In Progress
+360,Reporting,Easy,24-11-2024,16-12-2024,67,11,0,Not Started
+361,Documentation,Easy,02-06-2024,13-06-2024,67,5,0,Not Started
+362,Reporting,Easy,03-11-2023,12-11-2023,67,23,0,Not Started
+363,Documentation,Easy,06-11-2023,24-11-2023,67,30,34,In Progress
+364,Reporting,Easy,05-01-2025,03-02-2025,68,14,0,On Hold
+365,Reporting,Easy,29-10-2024,25-11-2024,68,14,0,On Hold
+366,Documentation,Easy,26-09-2024,04-10-2024,68,6,15,In Progress
+367,Documentation,Easy,18-01-2023,27-01-2023,68,37,0,Not Started
+368,Reporting,Easy,14-03-2024,21-03-2024,68,40,0,Not Started
+369,Reporting,Easy,13-03-2024,25-03-2024,68,15,39,In Progress
+370,Documentation,Easy,08-08-2023,06-09-2023,68,31,0,On Hold
+371,Reporting,Easy,12-09-2024,06-10-2024,68,11,11,In Progress
+372,Documentation,Easy,13-07-2023,29-07-2023,68,7,3,In Progress
+373,Documentation,Easy,04-07-2023,17-07-2023,68,30,28,In Progress
+374,Reporting,Easy,29-08-2024,16-09-2024,69,15,24,Completed
+375,Reporting,Easy,28-10-2023,16-11-2023,69,9,39,Completed
+376,Reporting,Easy,28-10-2023,27-11-2023,69,38,0,On Hold
+377,Reporting,Easy,27-03-2024,24-04-2024,69,16,23,Completed
+378,Documentation,Easy,03-11-2024,14-11-2024,69,7,0,On Hold
+379,Documentation,Easy,06-08-2024,25-08-2024,69,32,0,On Hold
+380,Documentation,Easy,22-12-2024,18-01-2025,69,40,0,On Hold
+381,Status Reporting,Easy,01-02-2025,13-02-2025,70,38,0,On Hold
+382,Status Reporting,Easy,15-04-2023,05-05-2023,70,16,0,Not Started
+383,Status Reporting,Easy,11-01-2024,25-01-2024,70,13,0,On Hold
+384,Project Planning,Easy,28-09-2024,23-10-2024,70,30,30,Completed
+385,Status Reporting,Easy,30-11-2024,15-12-2024,70,20,0,Not Started
+386,Status Reporting,Easy,12-12-2024,01-01-2025,70,39,22,In Progress
+387,Status Reporting,Easy,21-07-2023,03-08-2023,70,25,23,In Progress
+388,Project Planning,Easy,09-03-2024,16-03-2024,70,37,14,Completed
+389,Status Reporting,Easy,10-08-2023,31-08-2023,71,13,0,Not Started
+390,Project Planning,Easy,28-08-2024,20-09-2024,71,39,2,In Progress
+391,Project Planning,Easy,27-06-2024,25-07-2024,71,7,0,On Hold
+392,Project Planning,Easy,02-07-2024,31-07-2024,72,25,21,In Progress
+393,Status Reporting,Easy,23-11-2023,08-12-2023,72,24,20,Completed
+394,Status Reporting,Easy,08-07-2023,03-08-2023,72,6,0,On Hold
+395,Status Reporting,Easy,02-12-2023,23-12-2023,72,26,5,In Progress
+396,Project Planning,Easy,28-11-2024,13-12-2024,72,12,0,Not Started
+397,Project Planning,Easy,01-10-2023,14-10-2023,72,24,40,Completed
+398,Status Reporting,Easy,23-07-2024,14-08-2024,73,35,7,Completed
+399,Status Reporting,Easy,02-03-2024,28-03-2024,73,21,33,Completed
+400,Status Reporting,Easy,30-10-2023,27-11-2023,73,6,12,Completed
+401,Project Planning,Easy,30-10-2023,09-11-2023,73,8,0,On Hold
+402,Status Reporting,Easy,24-11-2024,09-12-2024,73,19,29,Completed
+403,Status Reporting,Easy,30-10-2023,28-11-2023,73,28,0,Not Started
+404,Status Reporting,Easy,07-09-2024,05-10-2024,74,6,0,Not Started
+405,Project Planning,Easy,17-12-2024,15-01-2025,74,10,0,Not Started
+406,Data Analysis,Easy,06-11-2024,19-11-2024,75,6,0,Not Started
+407,Data Analysis,Easy,04-01-2024,25-01-2024,76,15,21,In Progress
+408,Process Improvement,Easy,13-03-2025,31-03-2025,76,40,0,Not Started
+409,Data Analysis,Easy,03-11-2023,19-11-2023,76,20,27,In Progress
+410,Data Analysis,Easy,26-11-2023,03-12-2023,76,28,0,On Hold
+411,Data Analysis,Easy,24-01-2024,19-02-2024,76,12,16,In Progress
+412,Data Analysis,Easy,07-01-2025,19-01-2025,77,24,0,Not Started
+413,Process Improvement,Easy,03-04-2023,24-04-2023,77,12,40,In Progress
+414,Process Improvement,Easy,16-08-2024,04-09-2024,77,31,0,On Hold
+415,Data Analysis,Easy,18-07-2024,15-08-2024,77,10,30,Completed
+416,Data Analysis,Easy,08-11-2024,01-12-2024,77,25,0,Not Started
+417,Data Analysis,Easy,29-09-2023,22-10-2023,78,16,0,Not Started
+418,Process Improvement,Easy,29-02-2024,16-03-2024,78,25,35,In Progress
+419,Data Analysis,Easy,02-09-2024,27-09-2024,78,10,0,On Hold
+420,Process Improvement,Easy,17-10-2023,13-11-2023,78,12,17,Completed
+421,Process Improvement,Easy,08-03-2025,17-03-2025,78,39,22,Completed
+422,Process Improvement,Easy,20-08-2023,06-09-2023,79,38,20,In Progress
+423,Process Improvement,Easy,18-09-2023,12-10-2023,79,16,38,Completed
+424,Data Analysis,Easy,03-10-2024,20-10-2024,79,16,33,Completed
+425,Data Analysis,Easy,11-10-2023,31-10-2023,79,24,0,On Hold
+426,Data Analysis,Easy,04-12-2024,22-12-2024,79,39,0,On Hold
+427,Data Analysis,Easy,20-08-2023,15-09-2023,79,37,36,In Progress
+428,Process Improvement,Easy,07-06-2024,29-06-2024,79,25,40,In Progress
+429,Data Analysis,Easy,20-08-2023,05-09-2023,79,14,0,On Hold
+430,Process Improvement,Easy,20-12-2024,14-01-2025,80,14,0,Not Started
+431,Data Analysis,Easy,24-01-2024,03-02-2024,80,5,0,Not Started
+432,Process Improvement,Easy,28-02-2023,29-03-2023,80,40,0,Not Started
+433,Process Improvement,Easy,19-01-2025,16-02-2025,80,28,21,In Progress
+434,Data Analysis,Easy,10-01-2023,04-02-2023,80,32,0,Not Started
+435,Data Analysis,Easy,21-02-2025,19-03-2025,80,20,0,On Hold
+436,Data Analysis,Easy,04-05-2024,12-05-2024,80,5,0,Not Started
+437,Data Analysis,Easy,11-04-2024,29-04-2024,80,7,20,In Progress
+438,Data Analysis,Easy,20-03-2024,14-04-2024,80,25,0,On Hold
+439,Project Management,Easy,16-09-2024,08-10-2024,81,29,12,Completed
+440,Project Management,Easy,06-06-2024,30-06-2024,81,25,8,In Progress
+441,Process Improvement,Easy,01-08-2024,31-08-2024,81,16,21,Completed
+442,Process Improvement,Easy,20-08-2023,18-09-2023,81,34,0,On Hold
+443,Project Management,Easy,17-08-2023,11-09-2023,81,39,37,In Progress
+444,Project Management,Easy,01-04-2024,17-04-2024,81,34,0,On Hold
+445,Project Management,Easy,17-08-2023,29-08-2023,81,13,0,Not Started
+446,Process Improvement,Easy,13-05-2024,12-06-2024,81,27,0,Not Started
+447,Project Management,Easy,19-09-2024,01-10-2024,82,24,15,In Progress
+448,Project Management,Easy,31-03-2023,11-04-2023,82,25,3,In Progress
+449,Process Improvement,Easy,27-09-2023,24-10-2023,82,21,0,On Hold
+450,Project Management,Easy,11-10-2024,29-10-2024,82,23,0,On Hold
+451,Project Management,Easy,16-09-2023,08-10-2023,82,31,5,In Progress
+452,Project Management,Easy,07-05-2023,20-05-2023,82,28,0,On Hold
+453,Process Improvement,Easy,09-03-2024,20-03-2024,82,8,36,Completed
+454,Process Improvement,Easy,18-08-2024,06-09-2024,82,6,39,Completed
+455,Process Improvement,Easy,10-07-2024,01-08-2024,82,39,25,Completed
+456,Project Management,Easy,25-09-2023,13-10-2023,83,10,39,In Progress
+457,Process Improvement,Easy,01-05-2023,24-05-2023,83,30,23,In Progress
+458,Process Improvement,Easy,17-09-2023,25-09-2023,83,21,8,Completed
+459,Project Management,Easy,03-05-2024,23-05-2024,83,10,0,Not Started
+460,Project Management,Easy,18-08-2023,29-08-2023,83,38,24,Completed
+461,Project Management,Easy,15-07-2024,03-08-2024,84,17,20,In Progress
+462,Project Management,Easy,27-06-2023,09-07-2023,84,5,13,In Progress
+463,Process Improvement,Easy,03-05-2024,01-06-2024,84,39,0,On Hold
+464,Project Management,Easy,26-12-2023,04-01-2024,84,11,38,In Progress
+465,Process Improvement,Easy,02-12-2023,19-12-2023,84,36,0,Not Started
+466,Process Improvement,Easy,04-07-2024,23-07-2024,84,7,0,Not Started
+467,Project Management,Easy,04-01-2023,14-01-2023,84,23,0,On Hold
+468,Process Improvement,Easy,06-04-2024,23-04-2024,84,19,23,In Progress
+469,Project Management,Easy,14-11-2024,05-12-2024,84,21,0,On Hold
+470,Project Management,Easy,21-01-2025,10-02-2025,84,28,0,On Hold
+471,Reporting,Easy,15-01-2024,25-01-2024,85,9,30,Completed
+472,Financial Analysis,Easy,22-02-2023,03-03-2023,85,27,6,Completed
+473,Financial Analysis,Easy,04-03-2023,17-03-2023,85,23,0,Not Started
+474,Reporting,Easy,18-03-2024,08-04-2024,85,38,40,In Progress
+475,Financial Analysis,Easy,03-06-2024,19-06-2024,85,20,0,On Hold
+476,Financial Analysis,Easy,03-08-2024,12-08-2024,85,35,20,In Progress
+477,Financial Analysis,Easy,20-07-2024,18-08-2024,86,13,16,In Progress
+478,Financial Analysis,Easy,03-11-2023,20-11-2023,86,36,5,Completed
+479,Financial Analysis,Easy,06-02-2024,15-02-2024,86,31,0,On Hold
+480,Financial Analysis,Easy,02-10-2024,20-10-2024,86,7,0,Not Started
+481,Reporting,Easy,05-06-2024,02-07-2024,87,33,9,In Progress
+482,Reporting,Easy,07-10-2024,01-11-2024,87,10,32,In Progress
+483,Reporting,Easy,24-01-2025,22-02-2025,87,13,0,On Hold
+484,Financial Analysis,Easy,03-11-2023,11-11-2023,87,35,0,On Hold
+485,Reporting,Easy,24-02-2025,21-03-2025,87,21,0,Not Started
+486,Reporting,Easy,03-11-2023,26-11-2023,87,35,24,Completed
+487,Reporting,Easy,03-11-2023,30-11-2023,87,5,0,Not Started
+488,Reporting,Easy,27-07-2024,25-08-2024,87,7,38,Completed
+489,Financial Analysis,Easy,03-11-2023,22-11-2023,88,16,33,Completed
+490,Reporting,Easy,27-09-2024,11-10-2024,88,19,0,Not Started
+491,Reporting,Easy,27-08-2024,13-09-2024,88,8,26,In Progress
+492,Reporting,Easy,13-04-2024,05-05-2024,88,7,0,Not Started
+493,Financial Analysis,Easy,03-11-2023,22-11-2023,88,11,11,Completed
+494,Reporting,Easy,03-11-2023,15-11-2023,88,33,0,On Hold
+495,Financial Analysis,Easy,20-05-2024,14-06-2024,88,9,0,Not Started
+496,Financial Analysis,Easy,14-05-2023,02-06-2023,89,14,23,Completed
+497,Financial Analysis,Easy,19-01-2025,29-01-2025,89,36,26,Completed
+498,Financial Analysis,Easy,08-01-2025,06-02-2025,89,17,0,On Hold
+499,Reporting,Easy,25-06-2023,24-07-2023,89,30,18,In Progress
+500,Reporting,Easy,18-05-2024,13-06-2024,89,23,0,On Hold
+501,Reporting,Easy,15-07-2023,11-08-2023,89,11,22,In Progress
+502,Account Reconciliation,Easy,20-09-2024,16-10-2024,90,19,0,On Hold
+503,Account Reconciliation,Easy,12-10-2023,01-11-2023,90,29,0,On Hold
+504,Account Reconciliation,Easy,14-02-2023,02-03-2023,91,25,39,In Progress
+505,Financial Reporting,Easy,10-11-2023,02-12-2023,91,13,27,Completed
+506,Financial Reporting,Easy,03-08-2024,31-08-2024,91,30,31,Completed
+507,Financial Reporting,Easy,05-02-2025,01-03-2025,91,19,23,In Progress
+508,Account Reconciliation,Easy,18-01-2025,09-02-2025,91,38,0,On Hold
+509,Account Reconciliation,Easy,14-02-2024,26-02-2024,92,15,0,On Hold
+510,Account Reconciliation,Easy,18-08-2024,12-09-2024,92,34,10,Completed
+511,Account Reconciliation,Easy,14-10-2023,27-10-2023,92,16,34,In Progress
+512,Account Reconciliation,Easy,21-07-2024,02-08-2024,92,38,40,In Progress
+513,Account Reconciliation,Easy,08-07-2023,17-07-2023,92,16,0,On Hold
+514,Financial Reporting,Easy,24-05-2023,21-06-2023,92,32,0,Not Started
+515,Financial Reporting,Easy,26-12-2024,09-01-2025,92,25,17,Completed
+516,Account Reconciliation,Easy,29-02-2024,16-03-2024,92,20,39,In Progress
+517,Account Reconciliation,Easy,06-11-2024,23-11-2024,92,39,5,In Progress
+518,Financial Reporting,Easy,05-09-2024,18-09-2024,92,18,0,Not Started
+519,Training,Medium,03-11-2023,01-12-2023,93,17,24,Completed
+520,Recruitment,Medium,26-12-2023,04-01-2024,93,40,0,Not Started
+521,Recruitment,Medium,03-09-2024,14-09-2024,93,37,0,On Hold
+522,Recruitment,Medium,10-10-2024,01-11-2024,94,36,0,On Hold
+523,Training,Medium,29-03-2023,11-04-2023,94,29,32,In Progress
+524,Training,Medium,06-10-2023,29-10-2023,94,16,0,Not Started
+525,Recruitment,Medium,16-04-2023,04-05-2023,94,30,0,Not Started
+526,Recruitment,Medium,05-03-2025,23-03-2025,94,37,19,Completed
+527,Recruitment,Medium,18-03-2025,31-03-2025,94,25,0,On Hold
+528,Recruitment,Medium,14-05-2024,27-05-2024,94,36,0,Not Started
+529,Training,Medium,12-03-2025,01-04-2025,94,15,0,On Hold
+530,Training,Medium,29-01-2025,24-02-2025,95,22,3,Completed
+531,Training,Medium,03-11-2023,30-11-2023,96,26,34,Completed
+532,Recruitment,Medium,09-01-2025,01-02-2025,96,28,0,Not Started
+533,Recruitment,Medium,16-07-2023,10-08-2023,96,28,33,In Progress
+534,Recruitment,Medium,30-12-2024,20-01-2025,96,37,0,Not Started
+535,Training,Medium,20-01-2024,29-01-2024,96,25,0,On Hold
+536,Training,Medium,14-02-2025,04-03-2025,96,23,3,Completed
+537,Recruitment,Medium,23-06-2024,11-07-2024,97,18,40,In Progress
+538,Documentation,Easy,04-10-2024,27-10-2024,97,26,16,In Progress
+539,Documentation,Easy,31-07-2023,15-08-2023,97,37,0,On Hold
+540,Recruitment,Medium,13-09-2023,09-10-2023,98,33,0,On Hold
+541,Documentation,Easy,04-01-2023,12-01-2023,98,32,20,Completed
+542,Recruitment,Medium,16-01-2023,03-02-2023,98,19,0,Not Started
+543,Documentation,Easy,20-03-2025,28-03-2025,98,29,0,On Hold
+544,Recruitment,Medium,12-03-2023,29-03-2023,98,20,0,On Hold
+545,Documentation,Easy,23-04-2024,01-05-2024,98,26,0,On Hold
+546,Administration,Easy,03-03-2024,10-03-2024,99,20,0,On Hold
+547,Documentation,Easy,03-11-2023,10-11-2023,100,35,0,On Hold
+548,Administration,Easy,03-11-2023,29-11-2023,100,40,17,In Progress
+549,Documentation,Easy,09-05-2024,29-05-2024,100,15,29,In Progress
+550,Administration,Easy,03-11-2023,10-11-2023,100,9,7,In Progress
+551,Documentation,Easy,25-05-2024,23-06-2024,100,32,0,Not Started
+552,Administration,Easy,03-11-2023,16-11-2023,100,20,29,In Progress
