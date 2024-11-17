@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import google.generativeai as genai
-import os
 
 # Initialize Gemini API
 def initialize_gemini():
