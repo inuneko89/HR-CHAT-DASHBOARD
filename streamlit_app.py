@@ -89,14 +89,15 @@ def get_gemini_response(model, question, data_context):
 
 # Function to save feedback from employee with timestamp
 # Function to save feedback along with Employee_ID
-def save_feedback(feedback):
+def save_feedback(feedback, feedback_type="general"):
     try:
         feedback_data = pd.read_csv('feedback_data_page.csv')  # Updated file name
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         new_feedback = pd.DataFrame([{
             'Employee_ID': st.session_state.employee_id,  # Link feedback to the user
             'Feedback': feedback, 
-            'Timestamp': timestamp
+            'Timestamp': timestamp,
+            'Feedback_Type': feedback_type  # Add a type for feedback (e.g., AI Interaction, Emotional State)
         }])
         feedback_data = pd.concat([feedback_data, new_feedback], ignore_index=True)
         feedback_data.to_csv('feedback_data_page.csv', index=False)
@@ -104,6 +105,11 @@ def save_feedback(feedback):
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {str(e)}")
 
+# Logout function to clear session
+def logout():
+    st.session_state.clear()  # Clear the session state
+    st.success("คุณได้ออกจากระบบแล้ว")
+    st.experimental_rerun()  # Reload the app to show the login page
 
 def login_page():
     st.title("เข้าสู่ระบบ")
@@ -132,10 +138,15 @@ def login_page():
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
         else:
             st.error("ไม่พบ Employee ID นี้ในระบบ")
-
-
-
-
+def display_example_questions():
+    st.subheader("ตัวอย่างคำถามที่คุณสามารถถาม AI ได้:")
+    example_questions = [
+        "การลาหยุดของพนักงานคนนี้เป็นอย่างไร?",
+        "พนักงานคนนี้มาสายบ่อยไหม?",
+        "ข้อมูลวันลาในปีนี้มีแนวโน้มอย่างไร?",
+        "สามารถบอกสถิติการขาดงานของพนักงานคนนี้ได้ไหม?"
+    ]
+    return st.selectbox("เลือกคำถามจากตัวเลือก", example_questions)
 # Main Streamlit app function
 def main():
     st.set_page_config(page_title="HR Analytics Dashboard", page_icon="📊", layout="wide")
@@ -154,7 +165,6 @@ def main():
         
         if data_dict:
             # Sidebar for user role selection
-                        # Sidebar for user role selection
             with st.sidebar:
                 st.header(f"Welcome, {st.session_state.username}")
                 st.write(f"Employee ID: {st.session_state.employee_id}")
@@ -172,6 +182,9 @@ def main():
                     for data_name in selected_data:
                         st.subheader(f"📁 {data_name}")
                         st.write("Columns:", ", ".join(data_dict[data_name].columns.tolist()))
+                
+                if st.button("ออกจากระบบ"):
+                    logout()  # Logout button
 
             if st.session_state.role == "พนักงาน":
                 tab1, tab2 = st.tabs(["💬 ส่ง Feedback", "🤖 AI Assistant"])
@@ -186,6 +199,16 @@ def main():
                             st.warning("กรุณากรอกข้อความก่อนส่ง")
                 
                 with tab2:
+                    # Display example questions for the employee
+                    st.subheader("ตัวอย่างคำถามที่คุณสามารถถาม AI ได้:")
+                    example_questions = [
+                        "การลาหยุดของพนักงานคนนี้เป็นอย่างไร?",
+                        "พนักงานคนนี้มาสายบ่อยไหม?",
+                        "ข้อมูลวันลาในปีนี้มีแนวโน้มอย่างไร?",
+                        "สามารถบอกสถิติการขาดงานของพนักงานคนนี้ได้ไหม?"
+                    ]
+                    selected_question = st.selectbox("เลือกคำถามจากตัวเลือก", example_questions)
+
                     # Initialize chat history for Employees
                     if "employee_messages" not in st.session_state:
                         st.session_state.employee_messages = []
@@ -196,7 +219,7 @@ def main():
                             st.markdown(message["content"])
 
                     # Chat input
-                    if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูลบริษัทหรือข้อมูลทั่วไป..."):
+                    if prompt := st.chat_input(f"ถามคำถามเกี่ยวกับข้อมูลบริษัทหรือข้อมูลทั่วไป... หรือเลือกจากตัวเลือกด้านบน: {selected_question}"):
                         st.session_state.employee_messages.append({"role": "user", "content": prompt})
                         with st.chat_message("user"):
                             st.markdown(prompt)
@@ -212,59 +235,15 @@ def main():
                                 st.session_state.employee_messages.append({"role": "assistant", "content": response})
                                 with st.chat_message("assistant"):
                                     st.markdown(response)
+                                
+                                # Ask for feedback after the AI response
+                                feedback_prompt = "หลังจากที่ได้รับคำตอบจาก AI, คุณรู้สึกอย่างไร? ช่วยให้ความช่วยเหลือได้ดีหรือไม่? กรุณากรอกความคิดเห็นของคุณ"
+                                feedback = st.text_area(feedback_prompt)
+                                if st.button("ส่ง Feedback"):
+                                    save_feedback(feedback, feedback_type="AI Interaction")
                             except Exception as e:
-                                st.error(f"เกิดข้อผิดพลาดในการประมวลผล: {str(e)}")
-
-
-            # Main content based on user role
-            if st.session_state.role == "HR":
-                tab1, tab2 = st.tabs(["📊 Data Explorer", "💬 AI Assistant"])
-                
-                with tab1:
-                    # Get AI insights for selected datasets
-                    insights = get_data_insights(model, data_dict, selected_data)
-                    
-                    for data_name in selected_data:
-                        st.subheader(f"📊 {data_name}")
-                        
-                        # Display sample data
-                        st.write("ตัวอย่างข้อมูล:")
-                        st.dataframe(data_dict[data_name].head())
-                        
-                        # Display AI insights
-                        st.write("📈 การวิเคราะห์ข้อมูลโดย AI:")
-                        st.write(insights[data_name])
-
-                with tab2:
-                    # Initialize chat history for HR
-                    if "messages" not in st.session_state:
-                        st.session_state.messages = []
-                    
-                    # Display chat history
-                    for message in st.session_state.messages:
-                        with st.chat_message(message["role"]):
-                            st.markdown(message["content"])
-                    
-                    # Create data context for Gemini
-                    data_context = ""
-                    for data_name in selected_data:
-                        df = data_dict[data_name]
-                        data_context += f"\n{data_name}:\n"
-                        data_context += f"Columns: {', '.join(df.columns)}\n"
-                        for col in df.select_dtypes(include=['number']).columns:
-                            data_context += f"{col} stats: Min={df[col].min()}, Max={df[col].max()}, Mean={df[col].mean():.2f}\n"
-                    
-                    # Chat input
-                    if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูล HR..."):
-                        st.session_state.messages.append({"role": "user", "content": prompt})
-                        with st.chat_message("user"):
-                            st.markdown(prompt)
-                        
-                        if model:
-                            response = get_gemini_response(model, prompt, data_context)
-                            st.session_state.messages.append({"role": "assistant", "content": response})
-                            with st.chat_message("assistant"):
-                                st.markdown(response)
+                                st.error(f"เกิดข้อผิดพลาดในการประมวลผลคำตอบ: {str(e)}")
 
 if __name__ == "__main__":
     main()
+
