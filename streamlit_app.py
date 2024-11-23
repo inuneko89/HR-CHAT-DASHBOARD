@@ -2,43 +2,98 @@ import streamlit as st
 import pandas as pd
 import google.generativeai as genai
 from datetime import datetime
+import os
+from dotenv import load_dotenv
+import hashlib
+from google.cloud import bigquery
+from google.cloud import storage
+from google.oauth2 import service_account
+
+# ถ้าต้องการใช้ Service Account Key
+service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-28dd6b58ec57.json"
+credentials = service_account.Credentials.from_service_account_file(service_account_file)
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-28dd6b58ec57.json"
+## สร้าง BigQuery Client
+bigquery_client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
+# สร้าง Google Cloud Storage Client
+storage_client = storage.Client(credentials=credentials, project="test-pipeline-company")
+# ตัวอย่างการใช้ Google Cloud Storage
+bucket_name = "workwork_bucket"
+bucket = storage_client.bucket(bucket_name)  # This is the correct method for Storage Client
+# ตรวจสอบว่า bucket มีอยู่หรือไม่
 
 
+query = "SELECT * FROM `your-project-id.your-dataset-id.your-table-id`"
+results = bigquery_client.query(query)
+# โหลด API Key และตั้งค่า
+load_dotenv()
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+project_id = "test-pipeline-company"
+bucket_name = "workwork_bucket"
+dataset_id = "wh_work"  # Dataset ที่จะใช้งาน
+client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
 
-
-def initialize_gemini():
+genai.configure(api_key=GOOGLE_API_KEY)
+def load_hr_data_from_bigquery():
     try:
-        # Ensure API key configuration is correct
-        genai.configure(api_key="AIzaSyAPJBFzTSfSLuLQfszrVsliBnoG-AFPf6k")
-    except Exception as e:
-        st.error(f"ไม่สามารถเชื่อมต่อกับ Gemini API: {str(e)}")
+        tables = list(bigquery_client.list_tables(dataset_id))  # สร้างรายการของตารางทั้งหมด
+        if not tables:
+            st.warning(f"Dataset '{dataset_id}' ไม่มีตารางใดๆ")
+            return
+        
+        #st.write(f"ตารางใน Dataset '{dataset_id}':")  # แสดงข้อความเริ่มต้น
+        #for table in tables:
+        #   st.write(f"- {table.table_id}")  # แสดงชื่อแต่ละตาราง
 
-def load_hr_data():
-    try:
-        employee_data = pd.read_csv('employee_data_1511.csv')
-        employee_skills = pd.read_csv('employee_skills_1511.csv')
-        feedback_data = pd.read_csv('feedback_data_page.csv')
-        kpi_data = pd.read_csv('kpi_data.csv')
-        leave_data = pd.read_csv('leave_data_up.csv')
-        task_data = pd.read_csv('task_data2_edit.csv')
-
-        st.session_state.hr_data = {
-            'employee_data': employee_data,
-            'employee_skills': employee_skills,
-            'feedback_data': feedback_data,
-            'kpi_data': kpi_data,
-            'leave_data': leave_data,
-            'task_data': task_data
-        }
-        st.success("HR Data Loaded Successfully!")
+        st.session_state.hr_data = {}
+        context_data = []
+        for table in tables:
+            table_name = table.table_id
+            query = f"SELECT * FROM `{project_id}.{dataset_id}.{table_name}`"
+            df = bigquery_client.query(query).to_dataframe()
+            st.session_state.hr_data[table_name] = df
+            context_data.append(f"Table: {table_name}\n{df.head().to_string(index=False)}")
+            
+        
+        # สร้าง context สำหรับ Chatbot
+        st.session_state.context = "\n\n".join(context_data)  # รวมข้อมูลทั้งหมดเป็นข้อความ
+        st.success("โหลดข้อมูล HR จาก BigQuery สำเร็จ!")
         return st.session_state.hr_data
-    except FileNotFoundError as e:
-        st.error(f"ไม่พบไฟล์: {str(e)}")
-    except pd.errors.EmptyDataError as e:
-        st.error(f"ไฟล์ว่าง: {str(e)}")
+    except Exception as e:
+        st.error(f"เกิดข้อผิดพลาดในการโหลดข้อมูลจาก BigQuery: {str(e)}")
+        return None
+  
+
+
+# ฟังก์ชันแสดงข้อมูลทั้งหมด
+def display_all_data():
+    st.title("📊 ข้อมูลทั้งหมดจาก BigQuery")
+    if "hr_data" not in st.session_state:
+        load_hr_data_from_bigquery()
+    if st.session_state.hr_data:
+        for table_name, df in st.session_state.hr_data.items():
+            st.dataframe(df)  # แสดงข้อมูลใน DataFrame
+            
+
+# ฟังก์ชันบันทึก Feedback ลง BigQuery
+def save_feedback_bigquery(feedback, sprint_id, feedback_type="general"):
+    try:
+        client = bigquery.Client(project=project_id)  # ใช้ project_id
+        table_id = f"{project_id}.your_dataset.feedback_table"  # ใช้ project_id
+        rows_to_insert = [{
+            "Employee_ID": st.session_state.employee_id,
+            "Sprint_ID": sprint_id,
+            "Feedback": feedback,
+            "Timestamp": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+            "Feedback_Type": feedback_type
+        }]
+        errors = client.insert_rows_json(table_id, rows_to_insert)
+        if errors:
+            st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {errors}")
+        else:
+            st.success("Feedback ได้รับการบันทึกลง BigQuery เรียบร้อยแล้ว")
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาด: {str(e)}")
-    return None
 
 
 
@@ -46,41 +101,32 @@ def load_hr_data():
 
 
 
-# Logout function to clear session
-def logout():
-    st.session_state.clear()  # Clear the session state
-    st.success("คุณได้ออกจากระบบแล้ว")
-    st.rerun()  # Reload the app to show the login page
 
 
+
+# ฟังก์ชันหน้าเข้าสู่ระบบ
 def login_page():
     st.title("เข้าสู่ระบบ")
-    
-    # Create login form
-    employee_id = st.text_input("Employee ID")  # New field
+    employee_id = st.text_input("Employee ID")
     username = st.text_input("ชื่อผู้ใช้")
     password = st.text_input("รหัสผ่าน", type="password")
-    
     if st.button("เข้าสู่ระบบ"):
-        # Simulate user authentication (replace this with real database or API check)
         user_database = {
-            "101": {"username": "admin", "password": "password123", "role": "HR"},
-            "102": {"username": "user1", "password": "user123", "role": "พนักงาน"}
+            "101": {"username": "admin", "password": hashlib.sha256("password123".encode()).hexdigest(), "role": "HR"},
+            "102": {"username": "user1", "password": hashlib.sha256("user123".encode()).hexdigest(), "role": "พนักงาน"}
         }
-        
         if employee_id in user_database:
             user = user_database[employee_id]
-            if username == user["username"] and password == user["password"]:
+            if username == user["username"] and hashlib.sha256(password.encode()).hexdigest() == user["password"]:
                 st.session_state.logged_in = True
                 st.session_state.employee_id = employee_id
                 st.session_state.username = username
                 st.session_state.role = user["role"]
-                st.rerun()  # Reload the app without rendering additional UI elements
+                st.rerun()
             else:
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
         else:
             st.error("ไม่พบ Employee ID นี้ในระบบ")
-
 def save_feedback_rating(feedback_scores):
     try:
         feedback_data = pd.read_csv('feedback_data_page.csv')  # Load existing feedback data
@@ -104,7 +150,18 @@ def save_feedback_rating(feedback_scores):
         st.success("Feedback ได้รับการบันทึกแล้ว")
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {str(e)}")
-
+def show_all_data_for_hr():
+    st.title("📊 ข้อมูลทั้งหมดจาก BigQuery")
+    if "hr_data" not in st.session_state or not st.session_state.hr_data:
+        st.warning("ยังไม่ได้โหลดข้อมูลจาก BigQuery")
+        load_hr_data_from_bigquery()  # ลองโหลดข้อมูลอีกครั้ง
+    if st.session_state.hr_data:
+        for table_name, df in st.session_state.hr_data.items():
+            st.subheader(f"🔍 ตาราง: {table_name}")
+            st.dataframe(df)  # แสดงข้อมูลใน DataFrame
+            st.write(f"จำนวนแถวทั้งหมด: {len(df)}")
+    else:
+        st.warning("ไม่มีข้อมูลแสดง")
 
 def feedback_tab():
     st.header("กรุณาให้คะแนนและให้ Feedback สำหรับ sprint ที่ผ่านมา")
@@ -150,128 +207,99 @@ def feedback_tab():
 
 def chatbot_response(prompt):
     try:
-        # Use the correct method to call the Gemini model
-        response = genai.generate(
-            model="gemini-1.5-turbo",  # Replace with the correct model name if necessary
-            prompt=prompt,
-            temperature=0.7,
-            max_tokens=150
-        )
-        return response['choices'][0]['text'].strip()  # Extract the text response
-    except Exception as e:
-        return f"เกิดข้อผิดพลาด: {str(e)}"
+        # ตรวจสอบว่ามี context ข้อมูล HR หรือไม่
+        if "context" not in st.session_state or not st.session_state.context:
+            return "ไม่มีข้อมูล HR ในระบบ โปรดโหลดข้อมูลก่อน"
 
-def save_feedback(feedback, sprint_id, feedback_type="general"):
-    try:
-        # Updated file name for better organization
-        feedback_data = pd.read_csv('feedback_data_comment.csv')  
+        context = st.session_state.context  # ใช้ข้อมูล HR จากระบบ
         
-        # Add current timestamp
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        
-        # New feedback entry
-        new_feedback = pd.DataFrame([{
-            'Employee_ID': st.session_state.employee_id,  # Link feedback to the user
-            'Sprint_ID': sprint_id,  # Add sprint ID
-            'Feedback': feedback, 
-            'Timestamp': timestamp,
-            'Feedback_Type': feedback_type  # e.g., general, AI Interaction, Sprint-Specific
-        }])
-        
-        # Append new feedback to existing data
-        feedback_data = pd.concat([feedback_data, new_feedback], ignore_index=True)
-        feedback_data.to_csv('feedback_data_comment.csv', index=False)  # Save updated data
-        st.success("Feedback ได้รับการบันทึกแล้ว")
+        # ปรับปรุงการสร้าง prompt โดยให้รายละเอียดมากขึ้น
+        full_prompt = f"""
+        คุณเป็น HR Analyst ที่เชี่ยวชาญการวิเคราะห์ข้อมูลพนักงาน 
+        โปรดตอบคำถามต่อไปนี้โดยอ้างอิงจากข้อมูลที่มีในระบบ HR:
+
+        ข้อมูลที่มี:
+        {context}
+
+        คำถาม: {prompt}
+
+        กรุณาตอบให้ละเอียดและชัดเจน โดยแสดงข้อมูลเชิงสถิติ แนวโน้ม หรือเหตุผลที่สนับสนุนคำตอบ
+        หากคำถามมีหลายแง่มุม หรือสามารถตอบได้หลายแบบ โปรดระบุทุกกรณีที่เกี่ยวข้อง
+        """
+
+        # เชื่อมต่อกับโมเดลการประมวลผลที่เหมาะสม
+        model = genai.GenerativeModel('gemini-pro')
+        response = model.generate_content(full_prompt)
+        response_text = response.text.strip()
+
+        # ปรับปรุงการบันทึกประวัติแชทให้ละเอียดมากขึ้น
+        save_to_chat_history(prompt, response_text)
+
+        return response_text
+    
     except Exception as e:
-        st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {str(e)}")
+        return f"เกิดข้อผิดพลาดในการประมวลผล: {str(e)}"
+
+
+def save_to_chat_history(prompt, response):
+    if "chat_history" not in st.session_state:
+        st.session_state.chat_history = []  # สร้างประวัติเริ่มต้น
+    # ลบการตรวจสอบคำถามซ้ำออกไป
+    st.session_state.chat_history.append({"prompt": prompt, "response": response})
+
+
+def display_chat_history():
+    if "chat_history" in st.session_state and st.session_state.chat_history:
+        # แสดงคำถามและคำตอบในลำดับจากล่างขึ้นบน (คำถามใหม่อยู่ล่างสุด)
+        for entry in st.session_state.chat_history:
+            with st.chat_message("user"):
+                st.write(entry['prompt'])
+            with st.chat_message("assistant"):
+                st.write(entry['response'])
+
+
+
+
 
 
 def main():
-    st.set_page_config(page_title="HR Analytics Dashboard", page_icon="📊", layout="wide")
-    
-    # ตรวจสอบว่า 'hr_data' ถูกโหลดแล้วหรือยังใน session state
-    if 'hr_data' not in st.session_state:
-        load_hr_data()  # โหลดข้อมูล HR เมื่อยังไม่ได้โหลด
-    
-    # Initialize session state variables
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
-    if "employee_messages" not in st.session_state:
-        st.session_state.employee_messages = []  # Initialize chat history for employees
-    if "hr_messages" not in st.session_state:
-        st.session_state.hr_messages = []  # Initialize chat history for HR users
+    if "hr_data" not in st.session_state:
+        load_hr_data_from_bigquery()
 
-    # Check login status
+    if "context" not in st.session_state or not st.session_state.context:
+        load_hr_data_from_bigquery()  # โหลด context ถ้ายังไม่มี
+
     if not st.session_state.logged_in:
-        login_page()  # Show login page if not logged in
+        login_page()
     else:
         st.title("📊 HR Analytics Dashboard")
-        st.write("ระบบวิเคราะห์ข้อมูล HR ด้วย AI")
-        
-        # Initialize Gemini
-        model = initialize_gemini()
-
-        # Sidebar for user role selection
         with st.sidebar:
             st.header(f"Welcome, {st.session_state.username}")
-            st.write(f"Employee ID: {st.session_state.employee_id}")
             st.write(f"บทบาทของคุณ: {st.session_state.role}")
-
-            if st.session_state.role == "HR":
-                st.header("ข้อมูล HR ที่มี")
-                st.write("You have access to all the HR data.")
-                for data_name, df in st.session_state.hr_data.items():
-                    st.subheader(f"📁 {data_name}")
-                    st.write("Columns:", ", ".join(df.columns.tolist()))
-                
             if st.button("ออกจากระบบ"):
-                logout()  # Logout button
+                st.session_state.clear()
+                st.success("คุณได้ออกจากระบบแล้ว")
+                st.rerun()
+            # เพิ่มเมนูในการเข้าถึงข้อมูล
+            if st.session_state.role == "HR":
+                page = st.selectbox("เลือกหน้าจอ", ["หน้าหลัก", "ข้อมูลทั้งหมด"])
+                if page == "ข้อมูลทั้งหมด":
+                    show_all_data_for_hr()  # เรียกใช้งานฟังก์ชันที่สร้างขึ้น
 
-        # HR or Employee-specific content
         if st.session_state.role == "พนักงาน":
-            tab1, tab2 = st.tabs(["💬 ส่ง Feedback", "🤖 AI Assistant"])
+            feedback_tab()  # ใช้ Feedback Tab ที่ปรับปรุง
 
-            with tab1:
-                feedback_tab()  # Use rating-based feedback tab
-
-            with tab2:
-                # Display chat history for Employees
-                for message in st.session_state.employee_messages:
-                    with st.chat_message(message["role"]):
-                        st.markdown(message["content"])
-
-                # Chat input
-                if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูลบริษัทหรือข้อมูลทั่วไป..."):
-                    st.session_state.employee_messages.append({"role": "user", "content": prompt})
-                    with st.chat_message("user"):
-                        st.markdown(prompt)
-
-                    # Generate response using chatbot_response()
-                    response = chatbot_response(prompt)
-                    st.session_state.employee_messages.append({"role": "assistant", "content": response})
-                    with st.chat_message("assistant"):
-                        st.markdown(response)
-
-        # If role is HR, display the HR AI Chatbot on the main page
         elif st.session_state.role == "HR":
-            st.header("🤖 HR AI Chatbot")
-            
-            # Display chat history for HR users
-            for message in st.session_state.hr_messages:
-                with st.chat_message(message["role"]):
-                    st.markdown(message["content"])
-
-            # Chat input
-            if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูลบริษัทหรือข้อมูลทั่วไป..."):
-                st.session_state.hr_messages.append({"role": "user", "content": prompt})
-                with st.chat_message("user"):
-                    st.markdown(prompt)
-
-                # Generate response using chatbot_response()
+            if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูล HR..."):
                 response = chatbot_response(prompt)
-                st.session_state.hr_messages.append({"role": "assistant", "content": response})
-                with st.chat_message("assistant"):
-                    st.markdown(response)
+                
+                    
+            
+            # แสดงประวัติการสนทนา
+            display_chat_history()
+
 
 if __name__ == "__main__":
     main()

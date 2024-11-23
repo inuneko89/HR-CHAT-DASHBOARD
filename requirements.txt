@@ -2,3 +2,8 @@ streamlit
 pandas
 google-generativeai
 datetime
+dotenv
+db-dtypes
+hashlib
+google.cloud
+google.oauth2
