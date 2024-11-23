@@ -7,7 +7,4 @@ google-auth-oauthlib
 google-cloud
 google-cloud-core
 python-dotenv
-google-auth-oauthlib
 google-cloud-bigquery-storage
-hashlib
-datetime

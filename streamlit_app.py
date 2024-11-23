@@ -33,39 +33,36 @@ bucket_name = "workwork_bucket"
 dataset_id = "wh_work"  # Dataset ที่จะใช้งาน
 client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
 
+
+
 genai.configure(api_key=GOOGLE_API_KEY)
+# ฟังก์ชันโหลดข้อมูลจาก BigQuery
 def load_hr_data_from_bigquery():
     try:
-        tables = list(bigquery_client.list_tables(dataset_id))  # สร้างรายการของตารางทั้งหมด
-        if not tables:
-            st.warning(f"Dataset '{dataset_id}' ไม่มีตารางใดๆ")
-            return
-        
-        #st.write(f"ตารางใน Dataset '{dataset_id}':")  # แสดงข้อความเริ่มต้น
-        #for table in tables:
-        #   st.write(f"- {table.table_id}")  # แสดงชื่อแต่ละตาราง
-
-        st.session_state.hr_data = {}
-        context_data = []
-        for table in tables:
-            table_name = table.table_id
-            query = f"SELECT * FROM `{project_id}.{dataset_id}.{table_name}`"
-            df = bigquery_client.query(query).to_dataframe()
-            st.session_state.hr_data[table_name] = df
-            context_data.append(f"Table: {table_name}\n{df.head().to_string(index=False)}")
+        if "hr_data" not in st.session_state:  # ตรวจสอบว่าโหลดข้อมูลแล้วหรือยัง
+            tables = list(bigquery_client.list_tables(dataset_id))  # สร้างรายการของตารางทั้งหมด
+            if not tables:
+                st.warning(f"Dataset '{dataset_id}' ไม่มีตารางใดๆ")
+                return
             
-        
-        # สร้าง context สำหรับ Chatbot
-        st.session_state.context = "\n\n".join(context_data)  # รวมข้อมูลทั้งหมดเป็นข้อความ
-        st.success("โหลดข้อมูล HR จาก BigQuery สำเร็จ!")
-        return st.session_state.hr_data
+            st.session_state.hr_data = {}
+            context_data = []
+            for table in tables:
+                table_name = table.table_id
+                query = f"SELECT * FROM `{project_id}.{dataset_id}.{table_name}`"
+                df = bigquery_client.query(query).to_dataframe()
+                st.session_state.hr_data[table_name] = df
+                context_data.append(f"Table: {table_name}\n{df.head().to_string(index=False)}")
+
+            st.session_state.context = "\n\n".join(context_data)  # สร้าง context สำหรับ Chatbot
+            st.success("โหลดข้อมูล HR จาก BigQuery สำเร็จ!")
+        else:
+            st.success("ข้อมูล HR ถูกโหลดแล้วจากการใช้งานครั้งก่อน")
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาดในการโหลดข้อมูลจาก BigQuery: {str(e)}")
-        return None
   
 
 
-# ฟังก์ชันแสดงข้อมูลทั้งหมด
 def display_all_data():
     st.title("📊 ข้อมูลทั้งหมดจาก BigQuery")
     if "hr_data" not in st.session_state:
@@ -73,7 +70,6 @@ def display_all_data():
     if st.session_state.hr_data:
         for table_name, df in st.session_state.hr_data.items():
             st.dataframe(df)  # แสดงข้อมูลใน DataFrame
-            
 
 # ฟังก์ชันบันทึก Feedback ลง BigQuery
 def save_feedback_bigquery(feedback, sprint_id, feedback_type="general"):
@@ -215,7 +211,7 @@ def chatbot_response(prompt):
         
         # ปรับปรุงการสร้าง prompt โดยให้รายละเอียดมากขึ้น
         full_prompt = f"""
-        คุณเป็น HR Analyst ที่เชี่ยวชาญการวิเคราะห์ข้อมูลพนักงาน 
+        คุณเป็น ผู้เชี่ยวชาญ ที่เชี่ยวชาญการวิเคราะห์ข้อมูลพนักงาน 
         โปรดตอบคำถามต่อไปนี้โดยอ้างอิงจากข้อมูลที่มีในระบบ HR:
 
         ข้อมูลที่มี:
@@ -263,14 +259,19 @@ def display_chat_history():
 
 
 def main():
+    # ตรวจสอบสถานะการเข้าสู่ระบบ
     if "logged_in" not in st.session_state:
         st.session_state.logged_in = False
+    
+    # ตรวจสอบว่าได้โหลดข้อมูล HR หรือยัง
     if "hr_data" not in st.session_state:
-        load_hr_data_from_bigquery()
+        load_hr_data_from_bigquery()  # โหลดข้อมูล HR จาก BigQuery
 
+    # ตรวจสอบว่า context สำหรับ chatbot ถูกโหลดหรือยัง
     if "context" not in st.session_state or not st.session_state.context:
         load_hr_data_from_bigquery()  # โหลด context ถ้ายังไม่มี
 
+    # ถ้ายังไม่ได้เข้าสู่ระบบ ให้แสดงหน้าเข้าสู่ระบบ
     if not st.session_state.logged_in:
         login_page()
     else:
@@ -282,24 +283,24 @@ def main():
                 st.session_state.clear()
                 st.success("คุณได้ออกจากระบบแล้ว")
                 st.rerun()
-            # เพิ่มเมนูในการเข้าถึงข้อมูล
+            # เมนูให้เลือกการเข้าถึงข้อมูล
             if st.session_state.role == "HR":
                 page = st.selectbox("เลือกหน้าจอ", ["หน้าหลัก", "ข้อมูลทั้งหมด"])
                 if page == "ข้อมูลทั้งหมด":
-                    show_all_data_for_hr()  # เรียกใช้งานฟังก์ชันที่สร้างขึ้น
+                    show_all_data_for_hr()  # เรียกใช้งานฟังก์ชันแสดงข้อมูลทั้งหมด
 
         if st.session_state.role == "พนักงาน":
             feedback_tab()  # ใช้ Feedback Tab ที่ปรับปรุง
 
         elif st.session_state.role == "HR":
+            # ถามคำถามเกี่ยวกับข้อมูล HR
             if prompt := st.chat_input("ถามคำถามเกี่ยวกับข้อมูล HR..."):
                 response = chatbot_response(prompt)
-                
-                    
-            
+
             # แสดงประวัติการสนทนา
             display_chat_history()
 
-
 if __name__ == "__main__":
     main()
+
+
