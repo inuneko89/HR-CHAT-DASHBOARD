@@ -1,6 +1,6 @@
-streamlit==1.17.0
+streamlit
 pandas
-google-cloud-bigquery==3.0.0
+google-cloud-bigquery
 google-cloud-storage
 google-auth
 google-auth-oauthlib
