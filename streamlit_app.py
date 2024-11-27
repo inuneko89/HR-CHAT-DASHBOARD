@@ -10,7 +10,11 @@ from google.cloud import storage
 from google.oauth2 import service_account
 load_dotenv()
 service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json"
-credentials = service_account.Credentials.from_service_account_file(service_account_file)
+if os.path.exists(service_account_file):
+    print(f"ไฟล์พบที่: {service_account_file}")
+    credentials = service_account.Credentials.from_service_account_file(service_account_file)
+else:
+    print(f"ไม่พบไฟล์ที่ตำแหน่ง: {service_account_file}")
 
 ## สร้าง BigQuery Client
 bigquery_client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
