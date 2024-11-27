@@ -12,7 +12,9 @@ load_dotenv()
 service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json"
 if os.path.exists(service_account_file):
     print(f"ไฟล์พบที่: {service_account_file}")
-    credentials = service_account.Credentials.from_service_account_file(service_account_file)
+    credentials = service_account.Credentials.from_service_account_file(
+    '/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json'
+)
 else:
     print(f"ไม่พบไฟล์ที่ตำแหน่ง: {service_account_file}")
 
