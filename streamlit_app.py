@@ -8,11 +8,14 @@ import hashlib
 from google.cloud import bigquery
 from google.cloud import storage
 from google.oauth2 import service_account
-
-# ถ้าต้องการใช้ Service Account Key
 service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-28dd6b58ec57.json"
-credentials = service_account.Credentials.from_service_account_file(service_account_file)
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-28dd6b58ec57.json"
+
+if os.path.exists(service_account_file):
+    credentials = service_account.Credentials.from_service_account_file(service_account_file)
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account_file
+    print("Service Account Loaded")
+else:
+    print("ไม่พบไฟล์ Service Account")
 ## สร้าง BigQuery Client
 bigquery_client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
 # สร้าง Google Cloud Storage Client
@@ -23,17 +26,15 @@ bucket = storage_client.bucket(bucket_name)  # This is the correct method for St
 # ตรวจสอบว่า bucket มีอยู่หรือไม่
 
 
-query = "SELECT * FROM `your-project-id.your-dataset-id.your-table-id`"
+
 results = bigquery_client.query(query)
 # โหลด API Key และตั้งค่า
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 project_id = "test-pipeline-company"
 bucket_name = "workwork_bucket"
-dataset_id = "wh_work"  # Dataset ที่จะใช้งาน
+dataset_id = "chatbot"  # Dataset ที่จะใช้งาน
 client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
-
-
 
 genai.configure(api_key=GOOGLE_API_KEY)
 # ฟังก์ชันโหลดข้อมูลจาก BigQuery
@@ -52,7 +53,7 @@ def load_hr_data_from_bigquery():
                 query = f"SELECT * FROM `{project_id}.{dataset_id}.{table_name}`"
                 df = bigquery_client.query(query).to_dataframe()
                 st.session_state.hr_data[table_name] = df
-                context_data.append(f"Table: {table_name}\n{df.head().to_string(index=False)}")
+                context_data.append(f"Table: {table_name}\n{df.to_string(index=False)}")
 
             st.session_state.context = "\n\n".join(context_data)  # สร้าง context สำหรับ Chatbot
             st.success("โหลดข้อมูล HR จาก BigQuery สำเร็จ!")
@@ -72,10 +73,10 @@ def display_all_data():
             st.dataframe(df)  # แสดงข้อมูลใน DataFrame
 
 # ฟังก์ชันบันทึก Feedback ลง BigQuery
-def save_feedback_bigquery(feedback, sprint_id, feedback_type="general"):
+def save_feedback(feedback, sprint_id, feedback_type="general"):
     try:
         client = bigquery.Client(project=project_id)  # ใช้ project_id
-        table_id = f"{project_id}.your_dataset.feedback_table"  # ใช้ project_id
+        table_id = f"{project_id}.chatbot.feedback_tb"  # ใช้ project_id
         rows_to_insert = [{
             "Employee_ID": st.session_state.employee_id,
             "Sprint_ID": sprint_id,
@@ -90,14 +91,6 @@ def save_feedback_bigquery(feedback, sprint_id, feedback_type="general"):
             st.success("Feedback ได้รับการบันทึกลง BigQuery เรียบร้อยแล้ว")
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาด: {str(e)}")
-
-
-
-
-
-
-
-
 
 
 # ฟังก์ชันหน้าเข้าสู่ระบบ
@@ -123,13 +116,13 @@ def login_page():
                 st.error("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")
         else:
             st.error("ไม่พบ Employee ID นี้ในระบบ")
+# ฟังก์ชันบันทึก Feedback ลง BigQuery (ปรับให้ใช้ BigQuery)
 def save_feedback_rating(feedback_scores):
     try:
-        feedback_data = pd.read_csv('feedback_data_page.csv')  # Load existing feedback data
+        # เตรียมข้อมูลที่จะบันทึก
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-        # Create new feedback entry
-        new_feedback = pd.DataFrame([{
+        
+        rows_to_insert = [{
             'Employee_ID': st.session_state.employee_id,
             'Feedback_Type': "Sprint Feedback",
             'Colleague_Rating': feedback_scores['colleague'],
@@ -138,14 +131,20 @@ def save_feedback_rating(feedback_scores):
             'WorkLifeBalance_Rating': feedback_scores['work_life_balance'],
             'Environment_Rating': feedback_scores['work_environment'],
             'Timestamp': timestamp
-        }])
+        }]
         
-        # Append new feedback to existing data
-        feedback_data = pd.concat([feedback_data, new_feedback], ignore_index=True)
-        feedback_data.to_csv('feedback_data_page.csv', index=False)
-        st.success("Feedback ได้รับการบันทึกแล้ว")
+        # บันทึกข้อมูลลงใน BigQuery
+        table_id = f"{project_id}.chatbot.feedback_rating_tb"  # ชื่อ Table ที่จะบันทึก
+        errors = bigquery_client.insert_rows_json(table_id, rows_to_insert)
+        
+        if errors:
+            st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {errors}")
+        else:
+            st.success("Feedback ได้รับการบันทึกลง BigQuery เรียบร้อยแล้ว")
+    
     except Exception as e:
         st.error(f"เกิดข้อผิดพลาดในการบันทึก Feedback: {str(e)}")
+
 def show_all_data_for_hr():
     st.title("📊 ข้อมูลทั้งหมดจาก BigQuery")
     if "hr_data" not in st.session_state or not st.session_state.hr_data:
@@ -197,8 +196,6 @@ def feedback_tab():
         save_feedback_rating(feedback_scores)  # Save rating-based feedback
         if feedback_comment:
             save_feedback(feedback_comment, sprint_id, feedback_type="comment")  # Save free-text feedback
-
-
 
 
 def chatbot_response(prompt):
