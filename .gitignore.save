@@ -1,3 +1,4 @@
+secret..gitignore
 .streamlit/secrets.toml
 test-pipeline-company-28dd6b58ec57.json
 # Byte-compiled / optimized / DLL files

@@ -23,11 +23,7 @@ storage_client = storage.Client(credentials=credentials, project="test-pipeline-
 # ตัวอย่างการใช้ Google Cloud Storage
 bucket_name = "workwork_bucket"
 bucket = storage_client.bucket(bucket_name)  # This is the correct method for Storage Client
-# ตรวจสอบว่า bucket มีอยู่หรือไม่
 
-
-
-results = bigquery_client.query(query)
 # โหลด API Key และตั้งค่า
 load_dotenv()
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
