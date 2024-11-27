@@ -1,4 +1,0 @@
-Employee_ID,Feedback_Type,Colleague_Rating,Process_Rating,Task_Rating,WorkLifeBalance_Rating,Environment_Rating,Timestamp
-101,Sprint Feedback,5,4,5,4,5,2024-11-20 14:30:00
-102,Sprint Feedback,4,3,4,3,5,2024-11-20 15:00:00
-102,Sprint Feedback,1,1,1,1,1,2024-11-21 17:26:33
