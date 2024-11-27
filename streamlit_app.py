@@ -72,7 +72,7 @@ def display_all_data():
 def save_feedback(feedback, sprint_id, feedback_type="general"):
     try:
         client = bigquery.Client(project=project_id)  # ใช้ project_id
-        table_id = f"{project_id}.chatbot.feedback_tb"  # ใช้ project_id
+        table_id = f"{project_id}.wh_work.feedback_tb"  # ใช้ project_id
         rows_to_insert = [{
             "Employee_ID": st.session_state.employee_id,
             "Sprint_ID": sprint_id,
@@ -130,7 +130,7 @@ def save_feedback_rating(feedback_scores):
         }]
         
         # บันทึกข้อมูลลงใน BigQuery
-        table_id = f"{project_id}.chatbot.feedback_rating_tb"  # ชื่อ Table ที่จะบันทึก
+        table_id = f"{project_id}.wh_work.feedback_rating_tb"  # ชื่อ Table ที่จะบันทึก
         errors = bigquery_client.insert_rows_json(table_id, rows_to_insert)
         
         if errors:
