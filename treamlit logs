@@ -1,0 +1,28 @@
+[33m5638460[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Your commit message here
+[33meca2ca2[m ข้อความที่อธิบายการเปลี่ยนแปลง
+[33m40ecb93[m แก้ไขการตั้งค่า credentials สำหรับ BigQuery
+[33m2c793ae[m แก้ไขการตั้งค่า credentials สำหรับ BigQuery
+[33m11d8e63[m เพิ่มไฟล์ที่มีข้อมูลลับใน .gitignore
+[33m5243e98[m ลบไฟล์ที่มีข้อมูลความลับออกจาก Git
+[33mf96a6d2[m เพิ่มการตั้งค่า GOOGLE_CREDENTIALS ในไฟล์ .env
+[33m1fc8630[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime import os from dotenv import load_dotenv import hashlib from google.cloud import bigquery from google.cloud import storage from google.oauth2 import service_account service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-e0b007604731.json"
+[33m808d6cd[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime import os from dotenv import load_dotenv import hashlib from google.cloud import bigquery from google.cloud import storage from google.oauth2 import service_account service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-e0b007604731.json" credentials = service_account.Credentials.from_service_account_file(service_account_file) bigquery_client = bigquery.Client(credentials=credentials, project="test-pipeline-company") if os.path.exists(service_account_file):     credentials = service_account.Credentials.from_service_account_file(service_account_file)     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account_file     print("Service Account Loaded") else:     print("ไม่พบไฟล์ Service Account") # สร้าง Google Cloud Storage Client storage_client = storage.Client(credentials=credentials, project="test-pipeline-company") # ตัวอย่างการใช้ Google Cloud Storage bucket_name = "workwork_bucket" bucket = storage_client.bucket(bucket_name)  # This is the correct method for Storage Client
+[33m094690a[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime import os from dotenv import load_dotenv import hashlib from google.cloud import bigquery from google.cloud import storage from google.oauth2 import service_account service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-e0b007604731.json"
+[33m1d1d789[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime import os from dotenv import load_dotenv import hashlib from google.cloud import bigquery from google.cloud import storage from google.oauth2 import service_account service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-28dd6b58ec57.json"
+[33mea5e816[m Commit changes before running filter-branch
+[33m2df065c[m Remove sensitive file test-pipeline-company-28dd6b58ec57.json from Git history
+[33m67d10a9[m เพิ่มการเปลี่ยนแปลงใน streamlit_app.py และเพิ่มไฟล์ JSON
+[33m41a95e5[m ข้อความ commit ของคุณ
+[33mb8da6a1[m Remove sensitive data from commit
+[33mfe8bd11[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime import os from dotenv import load_dotenv import hashlib from google.cloud import bigquery from google.cloud import storage from google.oauth2 import service_account
+[33m774c086[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime import os from dotenv import load_dotenv import hashlib from google.cloud import bigquery from google.cloud import storage from google.oauth2 import service_account
+[33m4e18f89[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime
+[33m6e8ae72[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime
+[33m7f4bf9a[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime
+[33me363958[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime
+[33m5c43f45[m import streamlit as st import pandas as pd import google.generativeai as genai from datetime import datetime
+[33m955765d[m import streamlit as st import pandas as pd import google.generativeai as genai
+[33m85e83ef[m import streamlit as st import pandas as pd import google.generativeai as genai
+[33me158151[m import streamlit as st import pandas as pd import google.generativeai as genai
+error: Could not read 9c229086f53f4e8d4239edc8635f7b2564f9c34f
+fatal: Failed to traverse parents of commit 23bb8bfe4695cf1166752ddf5575955b2aa2cc89

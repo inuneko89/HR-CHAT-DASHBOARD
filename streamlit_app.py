@@ -8,11 +8,14 @@ import hashlib
 from google.cloud import bigquery
 from google.cloud import storage
 from google.oauth2 import service_account
-load_dotenv()
-credentials = service_account.Credentials.from_service_account_file('/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json')
 service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json"
 
-
+if os.path.exists(service_account_file):
+    credentials = service_account.Credentials.from_service_account_file(service_account_file)
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account_file
+    print("Service Account Loaded")
+else:
+    print("ไม่พบไฟล์ Service Account")
 ## สร้าง BigQuery Client
 bigquery_client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
 # สร้าง Google Cloud Storage Client
