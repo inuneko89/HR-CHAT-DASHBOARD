@@ -8,8 +8,15 @@ import hashlib
 from google.cloud import bigquery
 from google.cloud import storage
 from google.oauth2 import service_account
-credentials = service_account.Credentials.from_service_account_file('/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json')
+credentials = service_account.Credentials.from_service_account_file('test-pipeline-company-af4bb08adc36.json')
 service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json"
+import os
+
+file_path = '/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json'
+if os.path.exists(file_path):
+    print(f"File found: {file_path}")
+else:
+    print(f"File not found: {file_path}")
 
 if os.path.exists(service_account_file):
     credentials = service_account.Credentials.from_service_account_file(service_account_file)
