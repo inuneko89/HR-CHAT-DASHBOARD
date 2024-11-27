@@ -8,20 +8,24 @@ import hashlib
 from google.cloud import bigquery
 from google.cloud import storage
 from google.oauth2 import service_account
-credentials = service_account.Credentials.from_service_account_file('/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json')
 
-service_account_file = "/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json"
-import os
+load_dotenv(dotenv_path='/workspaces/HR-CHAT-DASHBOARD/apikey.env')
 
-file_path = '/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json'
-if os.path.exists(file_path):
-    print(f"File found: {file_path}")
+if not load_dotenv():
+    print("ไม่สามารถโหลดไฟล์ .env ได้")
 else:
-    print(f"File not found: {file_path}")
+    print("ไฟล์ .env ถูกโหลดเรียบร้อย")
+credentials = service_account.Credentials.from_service_account_file(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"))
+
+service_account_file = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
+if service_account_file and os.path.exists(service_account_file):
+    print("Service Account JSON file พบและพร้อมใช้งาน")
+else:
+    print(f"Service Account JSON file ไม่พบที่: {service_account_file}")
 
 if os.path.exists(service_account_file):
     credentials = service_account.Credentials.from_service_account_file(service_account_file)
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account_file
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"] = service_account_file
     print("Service Account Loaded")
 else:
     print("ไม่พบไฟล์ Service Account")
