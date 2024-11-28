@@ -1,5 +1,6 @@
 .streamlit/secrets.toml
-/workspaces/HR-CHAT-DASHBOARD/test-pipeline-company-af4bb08adc36.json
+*.json
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
