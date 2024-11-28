@@ -15,21 +15,16 @@ if not load_dotenv():
     print("ไม่สามารถโหลดไฟล์ .env ได้")
 else:
     print("ไฟล์ .env ถูกโหลดเรียบร้อย")
-credentials = service_account.Credentials.from_service_account_file(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"))
-
 service_account_file = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
 if service_account_file and os.path.exists(service_account_file):
     print("Service Account JSON file พบและพร้อมใช้งาน")
 else:
     print(f"Service Account JSON file ไม่พบที่: {service_account_file}")
+credentials = service_account.Credentials.from_service_account_file(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"))
+print(f"GOOGLE_APPLICATION_CREDENTIALS_JSON: {os.getenv('GOOGLE_APPLICATION_CREDENTIALS_JSON')}")
 
-if os.path.exists(service_account_file):
-    credentials = service_account.Credentials.from_service_account_file(service_account_file)
-    os.environ["GOOGLE_APPLICATION_CREDENTIALS_JSON"] = service_account_file
-    print("Service Account Loaded")
-else:
-    print("ไม่พบไฟล์ Service Account")
-## สร้าง BigQuery Client
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = service_account_file
+
 bigquery_client = bigquery.Client(credentials=credentials, project="test-pipeline-company")
 
 # สร้าง Google Cloud Storage Client
