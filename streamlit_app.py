@@ -9,8 +9,8 @@ from google.cloud import bigquery
 from google.cloud import storage
 from google.oauth2 import service_account
 
-load_dotenv(dotenv_path='/workspaces/HR-CHAT-DASHBOARD/apikey.env')
-
+load_dotenv()
+print(os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON"))
 service_account_file = os.getenv("GOOGLE_APPLICATION_CREDENTIALS_JSON")
 if service_account_file and os.path.exists(service_account_file):
     print("Service Account JSON file พบและพร้อมใช้งาน")
